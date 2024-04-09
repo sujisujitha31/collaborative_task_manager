@@ -17,6 +17,7 @@ void main() async {
   Get.put(TodoListController());
   Get.put(LoginController());
   print("just check cicd settedup or not ");
+  print("i just finished cicd setup");
   runApp(const MyApp());
 }
 
