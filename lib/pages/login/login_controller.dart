@@ -2,12 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/firebase/firebase_database.dart';
-import 'package:todo_app/pages/login/login_view.dart';
+import 'package:todo_app/pages/login/desktop_login_view.dart';
+import 'package:todo_app/pages/login/mobile_login_view.dart';
 import 'package:todo_app/pages/todo_list/todo_list_controller.dart';
-import 'package:todo_app/pages/todo_list/todo_list_view.dart';
+import 'package:todo_app/pages/todo_list/mobile_todo_list_view.dart';
+import 'package:todo_app/responsive_base_screen.dart';
 import 'package:todo_app/utils.dart' as u;
 import 'package:todo_app/globals.dart' as g;
 import 'package:todo_app/constant.dart' as c;
+
+import '../../responsive.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -79,14 +83,17 @@ class LoginController extends GetxController {
     validateEmailAndPassword();
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user == null) {
-        Get.offAll(() => const LoginView());
+        Get.offAll(() => Responsive(
+            desktopScaffold: DesktopLoginView(),
+            tabletScaffold: SizedBox(),
+            mobileScaffold: const LoginView()));
       } else {
         g.userMail = user.email!;
         getCollabarators();
         final todoController = Get.find<TodoListController>();
         todoController.searchByToday();
         todoController.getTodos();
-        Get.offAll(() => TodoListView());
+        Get.offAll(() => ResponsiveBaseScreen());
       }
     });
   }

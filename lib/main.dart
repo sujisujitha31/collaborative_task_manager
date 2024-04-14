@@ -5,6 +5,7 @@ import 'package:todo_app/pages/login/login_controller.dart';
 
 import 'firebase_options.dart';
 import 'pages/add_item/add_item_controller.dart';
+import 'pages/menu/menu_controller.dart';
 import 'pages/splash/splash_screen.dart';
 import 'pages/todo_list/todo_list_controller.dart';
 
@@ -13,11 +14,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Get.put(SideMenuController());
   Get.put(AddItemController());
   Get.put(TodoListController());
   Get.put(LoginController());
-  print("just check cicd settedup or not ");
-  print("i just finished cicd setup");
+  // print("just check cicd settedup or not ");
+  // print("i just finished cicd setup");
   runApp(const MyApp());
 }
 

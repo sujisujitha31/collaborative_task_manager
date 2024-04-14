@@ -28,7 +28,7 @@ class TextWithDmSans extends StatelessWidget {
       required this.text,
       this.color,
       this.weight,
-      this.fontSize,
+      this.fontSize = 12,
       this.decoration,
       this.maxLine});
   final String text;
@@ -163,7 +163,8 @@ showWarning(String title, String msg) {
 List<BoxShadow> getBoxShadow() {
   return const [
     BoxShadow(
-      color: Colors.black38,
+      color: Colors.black12,
+      //  Color(0x1F000000);
       offset: Offset(
         0,
         4,

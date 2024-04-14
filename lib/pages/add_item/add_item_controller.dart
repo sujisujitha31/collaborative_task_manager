@@ -12,13 +12,11 @@ import 'package:todo_app/globals.dart' as g;
 import '../../constant.dart';
 
 class AddItemController extends GetxController {
-  var selectedCollabs = "".obs;
-  var isSelectedTodo = true.obs;
-  var selectedDate = DateTime.now().obs;
   TimeOfDay? startTime;
   TextEditingController sTimeStr = TextEditingController();
   TimeOfDay? endTime;
   TextEditingController eTimeStr = TextEditingController();
+  var selectedDate = DateTime.now().obs;
   var goingToMakePriority = false.obs;
   var focus = FocusNode().obs;
   TextEditingController titleController = TextEditingController();
