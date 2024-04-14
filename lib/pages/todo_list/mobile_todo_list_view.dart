@@ -9,8 +9,8 @@ import 'components/floating_button.dart';
 import 'components/todo_card.dart';
 import 'package:todo_app/utils.dart' as u;
 
-class TodoListView extends GetView<TodoListController> {
-  TodoListView({super.key});
+class MobileTodoListView extends GetView<TodoListController> {
+  MobileTodoListView({super.key});
   final DateTime today = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -44,15 +44,14 @@ class NavigationCalendar extends GetView<TodoListController> {
   Widget build(BuildContext context) {
     return GetBuilder<TodoListController>(builder: (cont) {
       return Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         width: w,
-        height: h * .2,
         decoration: BoxDecoration(
             color: Colors.blue.withOpacity(0.1),
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(200),
-                bottomRight: Radius.circular(200))),
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: u.getBoxShadow()),
         child: TableCalendar(
-          calendarFormat: CalendarFormat.week,
+          calendarFormat: CalendarFormat.month,
           focusedDay: controller.selectedDate.value,
           firstDay: DateTime(2024, 03, 04),
           lastDay: DateTime.now().add(
@@ -118,6 +117,7 @@ calenderDaysBox(DateTime day,
       text: day.day.toString(),
       color: dayColor,
       weight: weight,
+      fontSize: 12,
     )),
   );
 }
