@@ -19,7 +19,7 @@ class MobileTodoListView extends GetView<TodoListController> {
     return Scaffold(
       body: Column(
         children: [
-          NavigationCalendar(w: w, h: h, today: today),
+          NavigationCalendar(w: w, today: today),
           LoadingWidgetOrListWidgetOfTodos(h: h * .8, today: today, w: w)
         ],
       ),
@@ -32,12 +32,12 @@ class NavigationCalendar extends GetView<TodoListController> {
   const NavigationCalendar({
     super.key,
     required this.w,
-    required this.h,
+    // required this.h,
     required this.today,
   });
 
   final double w;
-  final double h;
+  // final double h;
   final DateTime today;
 
   @override
@@ -47,10 +47,12 @@ class NavigationCalendar extends GetView<TodoListController> {
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         width: w,
         decoration: BoxDecoration(
-            color: Colors.blue.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: u.getBoxShadow()),
+            // color: Colors.blue.withOpacity(0.1),
+            // borderRadius: BorderRadius.circular(10),
+            // boxShadow: u.getBoxShadow()
+            ),
         child: TableCalendar(
+          // daysOfWeekVisible: false,
           calendarFormat: CalendarFormat.month,
           focusedDay: controller.selectedDate.value,
           firstDay: DateTime(2024, 03, 04),
@@ -63,14 +65,22 @@ class NavigationCalendar extends GetView<TodoListController> {
           onDaySelected: (selectedDay, focusedDay) {
             controller.selectDate(selectedDay);
           },
-          daysOfWeekStyle: const DaysOfWeekStyle(
+          // headerVisible: false,
+          startingDayOfWeek: StartingDayOfWeek.monday,
+
+          daysOfWeekStyle: DaysOfWeekStyle(
+            dowTextFormatter: (date, locale) {
+              return u.getSingleLetterWeekDay(date);
+            },
             decoration: BoxDecoration(),
           ),
           headerStyle: HeaderStyle(
+              leftChevronIcon: getChevIcon(Icons.chevron_left_rounded),
+              rightChevronIcon: getChevIcon(Icons.chevron_right_rounded),
               formatButtonVisible: false,
               titleCentered: true,
               titleTextStyle: GoogleFonts.dmSans(
-                  color: violet, fontWeight: FontWeight.w600)),
+                  color: Color(0xff4e4dac), fontWeight: FontWeight.w600)),
           calendarStyle: const CalendarStyle(
             outsideDaysVisible: false,
           ),
@@ -79,8 +89,8 @@ class NavigationCalendar extends GetView<TodoListController> {
               return calenderDaysBox(day);
             },
             selectedBuilder: (context, day, focusedDay) => calenderDaysBox(day,
-                dayColor: violet,
-                color: Colors.blue.withOpacity(0.2),
+                dayColor: Colors.white,
+                color: Color(0xff4e4dac),
                 weight: FontWeight.w600),
             todayBuilder: (context, day, focusedDay) => calenderDaysBox(
               day,
@@ -96,6 +106,18 @@ class NavigationCalendar extends GetView<TodoListController> {
       );
     });
   }
+
+  Container getChevIcon(IconData data) {
+    return Container(
+      decoration:
+          BoxDecoration(color: Color(0xffb4b4da), shape: BoxShape.circle),
+      padding: EdgeInsetsDirectional.all(5),
+      child: Icon(
+        data,
+        color: Colors.white,
+      ),
+    );
+  }
 }
 
 calenderDaysBox(DateTime day,
@@ -110,8 +132,8 @@ calenderDaysBox(DateTime day,
         shape: BoxShape.circle,
         gradient: gradient,
         border: border),
-    height: 45,
-    width: 45,
+    height: 35,
+    width: 35,
     child: Center(
         child: u.TextWithDmSans(
       text: day.day.toString(),
