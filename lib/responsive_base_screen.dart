@@ -34,9 +34,7 @@ class Desktop extends DesktopBaseScreen {
   @override
   buildDrawer(BuildContext context) {
     // TODO: implement buildDrawer
-    return Container(
-      color: Colors.blue,
-    );
+    return super.buildDrawer(context);
   }
 }
 

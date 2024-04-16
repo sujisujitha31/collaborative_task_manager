@@ -10,6 +10,10 @@ String getWeekDay(DateTime day) {
   return DateFormat.E().format(day);
 }
 
+String getSingleLetterWeekDay(DateTime date) {
+  return DateFormat.E().format(date)[0];
+}
+
 String getMonthName(DateTime day) {
   return DateFormat("MMMM").format(day);
 }

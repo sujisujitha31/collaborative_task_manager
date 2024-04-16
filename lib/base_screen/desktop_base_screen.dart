@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/utils.dart' as u;
-
 import '../pages/menu/menu_view.dart';
 
 class DesktopBaseScreen extends StatelessWidget {
@@ -15,13 +14,7 @@ class DesktopBaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        // bottomSheet: Container(
-        //   width: double.infinity,
-        //   height: 30,
-        //   // decoration: BoxDecoration(color: c.cOrange),
-        //   child: const Footer(),
-        // ),
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: Color(0xfff5f5fa),
         body: SafeArea(
           child: Row(
             children: [
