@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/pages/todo_list/todo_list_controller.dart';
-
+import 'package:todo_app/globals.dart' as g;
 import 'mobile_todo_list_view.dart';
 import 'package:todo_app/utils.dart' as u;
 
@@ -19,17 +19,37 @@ class DesktopTodoListView extends GetView<TodoListController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: h * .1,
+          height: h * .15,
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: u.TextWithDmSans(
-                text:
-                    "Tasks under ${u.getFullDate(controller.selectedDate.value)}",
-                fontSize: 18,
-                weight: FontWeight.w700,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: u.TextWithDmSans(
+                    text:
+                        "Tasks under ${u.getFullDate(controller.selectedDate.value)}",
+                    fontSize: 18,
+                    weight: FontWeight.w700,
+                  ),
+                ),
+                const Spacer(),
+                CircleAvatar(
+                  maxRadius: 25,
+                  minRadius: 25,
+                  backgroundColor: orangeTheme,
+                  // purpleTheme,
+                  //  Color(0xc48894),
+                  child: u.TextWithDmSans(
+                    text: g.userMail[0],
+                    weight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 23,
+                  ),
+                ),
+                u.hFill(10),
+              ],
             ),
           ),
         ),
@@ -42,7 +62,7 @@ class DesktopTodoListView extends GetView<TodoListController> {
             // ),
 
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               width: parentWidth * .6,
               // height: h,
               child: Column(
@@ -50,30 +70,32 @@ class DesktopTodoListView extends GetView<TodoListController> {
                 children: [
                   GetBuilder<TodoListController>(builder: (cont) {
                     if (cont.isGettingTodos.value) {
-                      return Center(child: CircularProgressIndicator()
+                      return const Center(child: CircularProgressIndicator()
                           // SpinKitCircle(color:Colors.blue.shade100),
                           );
                     } else if (!cont.isGettingTodos.value &&
                         cont.todoList.isEmpty) {
                       return SizedBox(
                         height: h * .5,
-                        child: u.TextWithDmSans(text: "There is no todo "),
+                        child:
+                            const u.TextWithDmSans(text: "There is no todo "),
                       );
                     } else {
                       return GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10),
                         itemCount: controller.todoList.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 5, vertical: 5),
                             decoration: BoxDecoration(
-                              color: Color(0xffe7e7f3),
+                              color: const Color(0xffe7e7f3),
                               border:
                                   Border.all(color: violetLight, width: 0.2),
                               borderRadius: BorderRadius.circular(10),
@@ -113,15 +135,15 @@ class DesktopTodoListView extends GetView<TodoListController> {
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Container(
-              height: h * .9,
+              height: h * .85,
               // color: Colors.white,
               decoration: BoxDecoration(
                   boxShadow: u.getBoxShadow(),
                   borderRadius:
-                      BorderRadius.only(topLeft: Radius.circular(40))),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const BorderRadius.only(topLeft: Radius.circular(40))),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Column(mainAxisSize: MainAxisSize.max, children: [
                 NavigationCalendar(
                   // h: h,/
