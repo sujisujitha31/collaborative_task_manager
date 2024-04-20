@@ -60,7 +60,7 @@ class AddItemScreen extends GetView<AddItemController> {
                 ),
                 u.vFill(h * .02),
                 getHeading("Time"),
-                const TapTime(),
+                TapTime(w),
                 u.vFill(h * .02),
                 getHeading("Collab with"),
                 CollaborationWidget(
@@ -114,7 +114,7 @@ getHeading(String str) {
     children: [
       u.TextWithDmSans(
         text: str,
-        fontSize: 17,
+        fontSize: 12,
         weight: FontWeight.w500,
       ),
       u.vFill(7),

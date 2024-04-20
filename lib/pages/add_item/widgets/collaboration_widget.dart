@@ -63,7 +63,7 @@ class CollaborationWidget extends StatelessWidget {
                     controller.showAddCollabPopup();
                   },
                   decoration: InputDecoration(
-                      hintStyle: GoogleFonts.dmSans(),
+                      hintStyle: GoogleFonts.dmSans(fontSize: 12),
                       hintText: "Choose collaborators",
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: violet)),

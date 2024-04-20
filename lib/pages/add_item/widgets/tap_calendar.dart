@@ -39,7 +39,7 @@ class TapCalendar extends StatelessWidget {
           child: Center(
               child: u.TextWithDmSans(
                   text: u.getFullDate(controller.selectedDate.value),
-                  fontSize: 17,
+                  fontSize: 12,
                   weight: FontWeight.w500)),
         ),
       ),

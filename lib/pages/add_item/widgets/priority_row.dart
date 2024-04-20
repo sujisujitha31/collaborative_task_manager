@@ -21,7 +21,7 @@ class PriorityRow extends StatelessWidget {
       children: [
         const u.TextWithDmSans(
           text: "Show it on the top of Todo list",
-          fontSize: 17,
+          fontSize: 12,
           color: Colors.black45,
         ),
         Transform.scale(
