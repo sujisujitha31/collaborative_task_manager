@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
 
 class DescriptionField extends StatelessWidget {
@@ -16,6 +17,7 @@ class DescriptionField extends StatelessWidget {
       () => Focus(
         focusNode: controller.focus.value,
         child: TextFormField(
+          style: GoogleFonts.roboto(fontSize: 12),
           onSaved: (value) {
             controller.focus.value.unfocus();
           },
@@ -49,6 +51,7 @@ class TitleField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: GoogleFonts.dmSans(fontSize: 12),
       controller: controller.titleController,
       decoration: InputDecoration(
           filled: true,
