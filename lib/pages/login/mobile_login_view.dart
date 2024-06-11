@@ -78,33 +78,49 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const u.TextWithDmSans(
-          text: "Login",
-          fontSize: 25,
-          weight: FontWeight.w700,
-        ),
-        u.vFill(height * .03),
-        TextFormField(
-          style: GoogleFonts.dmSans(),
-          controller: controller.emailController,
-          decoration: InputDecoration(
-              // focusColor: violet,
-              focusedBorder:
-                  UnderlineInputBorder(borderSide: BorderSide(color: violet)),
-              hintStyle: GoogleFonts.dmSans(fontSize: 12),
-              hintText: "Enter your mail id",
-              prefixIcon: Icon(
-                Icons.email,
-                color: violet,
-              )),
-        ),
-        u.vFill(height * .03),
-        TextFormField(
-          controller: controller.passwordController,
-          decoration: InputDecoration(
+    return GetBuilder<LoginController>(builder: (con) {
+      return Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const u.TextWithDmSans(
+            text: "Login",
+            fontSize: 25,
+            weight: FontWeight.w700,
+          ),
+          u.vFill(height * .03),
+          TextFormField(
+            style: GoogleFonts.dmSans(),
+            controller: controller.emailController,
+            decoration: InputDecoration(
+                // focusColor: violet,
+                focusedBorder:
+                    UnderlineInputBorder(borderSide: BorderSide(color: violet)),
+                hintStyle: GoogleFonts.dmSans(fontSize: 12),
+                hintText: "Enter your mail id",
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: violet,
+                )),
+          ),
+          u.vFill(height * .07),
+          TextFormField(
+            controller: con.passwordController,
+            // obscuringCharacter:"." ,
+            onFieldSubmitted: (value) {
+              controller.onLogin();
+            },
+            obscureText: con.passwordVisibilityOff.value,
+            decoration: InputDecoration(
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    con.changePasswordVisibility();
+                  },
+                  icon: Icon(
+                    con.passwordVisibilityOff.value
+                        ? Icons.visibility_rounded
+                        : Icons.visibility_off_rounded,
+                    color: violet,
+                  )),
               focusedBorder:
                   UnderlineInputBorder(borderSide: BorderSide(color: violet)),
               hintStyle: GoogleFonts.dmSans(fontSize: 12),
@@ -113,38 +129,37 @@ class LoginBody extends StatelessWidget {
                 Icons.lock,
                 color: violet,
               ),
-              suffixIcon: const Icon(
-                Icons.visibility,
-              )),
-        ),
-        u.vFill(height * .05),
-        SizedBox(
-          width: width * .6,
-          child: Center(
-            child: InkWell(
-              onTap: () => controller.onLogin(),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    gradient: LinearGradient(colors: [
-                      violetLight,
-                      violet,
-                    ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
-                padding: EdgeInsets.symmetric(vertical: height * .02),
-                child: const Center(
-                  child: u.TextWithDmSans(
-                    text: "Login",
-                    color: Colors.white,
-                    weight: FontWeight.w500,
+            ),
+          ),
+          u.vFill(height * .1),
+          SizedBox(
+            width: width * .6,
+            child: Center(
+              child: InkWell(
+                onTap: () => controller.onLogin(),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(colors: [
+                        violetLight,
+                        violet,
+                      ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+                  padding: EdgeInsets.symmetric(vertical: height * .02),
+                  child: const Center(
+                    child: u.TextWithDmSans(
+                      text: "Login",
+                      color: Colors.white,
+                      weight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        )
-      ],
-    );
+          )
+        ],
+      );
+    });
   }
 }
 
