@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:todo_app/constant.dart';
-import 'package:todo_app/utils.dart' as u;
 import '../pages/menu/menu_view.dart';
 
 class DesktopBaseScreen extends StatelessWidget {
@@ -14,7 +11,7 @@ class DesktopBaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: Color(0xfff5f5fa),
+        backgroundColor: const Color(0xfff5f5fa),
         body: SafeArea(
           child: Row(
             children: [
@@ -27,12 +24,12 @@ class DesktopBaseScreen extends StatelessWidget {
 
 // this is drawer
   buildDrawer(BuildContext context) {
-    return SideMenu();
+    return const SideMenu();
   }
 
 // this is content area
   buildBodyContent(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
         // width: MediaQuery.of(context).size.width * .83,
         );
   }

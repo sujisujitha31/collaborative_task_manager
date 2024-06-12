@@ -14,7 +14,7 @@ class ResponsiveBaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Responsive(
         mobileScaffold: Mobile(),
-        tabletScaffold: Tablet(),
+        tabletScaffold: const Tablet(),
         desktopScaffold: Desktop());
   }
 }
@@ -39,7 +39,7 @@ class Desktop extends DesktopBaseScreen {
 }
 
 class Tablet extends TabletBaseScreen {
-  Tablet({Key? key})
+  const Tablet({Key? key})
       : super(
           key: key,
         );
@@ -59,7 +59,6 @@ class Mobile extends MobileBaseScreen {
   final controller = Get.find<SideMenuController>();
   @override
   buildBodyContent(BuildContext context) {
-    return SizedBox();
     return Obx(() => controller.mobilePages[controller.selectedPage.value]);
   }
 }

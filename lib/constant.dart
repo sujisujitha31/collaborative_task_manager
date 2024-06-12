@@ -5,9 +5,9 @@ Color violetLight = const Color.fromARGB(255, 65, 102, 150);
 Color todoColor = const Color(0xff97b7c0);
 Color routinecolor = const Color(0xffef9191);
 
-Color bg = Color(0xffe7e7f3);
-Color purpleTheme = Color(0xff4e4dac);
-Color orangeTheme = Color(0xffffa79d);
+Color bg = const Color(0xffe7e7f3);
+Color purpleTheme = const Color(0xff4e4dac);
+Color orangeTheme = const Color(0xffffa79d);
 
 class Constants {
   static const String kTodoStatusDone = "done";

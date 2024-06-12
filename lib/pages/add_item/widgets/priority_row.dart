@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
 import 'package:todo_app/utils.dart' as u;
-import 'package:todo_app/globals.dart' as g;
 
 class PriorityRow extends StatelessWidget {
   const PriorityRow({

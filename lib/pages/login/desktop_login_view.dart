@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart' as c;
 import 'package:todo_app/pages/login/login_controller.dart';
-
 import 'mobile_login_view.dart';
 
 class DesktopLoginView extends GetView<LoginController> {
@@ -10,10 +9,12 @@ class DesktopLoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    print("desktop view");
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width * .83;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Row(
           mainAxisAlignment: MainAxisAlignment.end,

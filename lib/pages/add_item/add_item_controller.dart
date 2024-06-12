@@ -290,7 +290,7 @@ class AddItemController extends GetxController {
               onPressed: () {
                 Get.back();
               },
-              child: u.TextWithDmSans(
+              child: const u.TextWithDmSans(
                 text: "Okay",
               ))
         ]);

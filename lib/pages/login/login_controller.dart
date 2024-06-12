@@ -108,19 +108,18 @@ class LoginController extends GetxController {
   checkUserLoggedInOrNot() {
     validateEmailAndPassword();
     FirebaseAuth.instance.authStateChanges().listen((user) {
-      print("inside authstatechanges");
       if (user == null) {
-        Get.offAll(() => Responsive(
+        Get.offAll(() => const Responsive(
             desktopScaffold: DesktopLoginView(),
             tabletScaffold: SizedBox(),
-            mobileScaffold: const LoginView()));
+            mobileScaffold: LoginView()));
       } else {
         g.userMail = user.email!;
         getCollabarators();
         final todoController = Get.find<TodoListController>();
         todoController.searchByToday();
         todoController.getTodos();
-        Get.offAll(() => ResponsiveBaseScreen());
+        Get.offAll(() => const ResponsiveBaseScreen());
       }
     });
   }

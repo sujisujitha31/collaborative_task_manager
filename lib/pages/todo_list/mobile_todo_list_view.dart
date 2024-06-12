@@ -44,9 +44,9 @@ class NavigationCalendar extends GetView<TodoListController> {
   Widget build(BuildContext context) {
     return GetBuilder<TodoListController>(builder: (cont) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         width: w,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             // color: Colors.blue.withOpacity(0.1),
             // borderRadius: BorderRadius.circular(10),
             // boxShadow: u.getBoxShadow()
@@ -72,7 +72,7 @@ class NavigationCalendar extends GetView<TodoListController> {
             dowTextFormatter: (date, locale) {
               return u.getSingleLetterWeekDay(date);
             },
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
           ),
           headerStyle: HeaderStyle(
               leftChevronIcon: getChevIcon(Icons.chevron_left_rounded),
@@ -80,7 +80,7 @@ class NavigationCalendar extends GetView<TodoListController> {
               formatButtonVisible: false,
               titleCentered: true,
               titleTextStyle: GoogleFonts.dmSans(
-                  color: Color(0xff4e4dac), fontWeight: FontWeight.w600)),
+                  color: const Color(0xff4e4dac), fontWeight: FontWeight.w600)),
           calendarStyle: const CalendarStyle(
             outsideDaysVisible: false,
           ),
@@ -90,7 +90,7 @@ class NavigationCalendar extends GetView<TodoListController> {
             },
             selectedBuilder: (context, day, focusedDay) => calenderDaysBox(day,
                 dayColor: Colors.white,
-                color: Color(0xff4e4dac),
+                color: const Color(0xff4e4dac),
                 weight: FontWeight.w600),
             todayBuilder: (context, day, focusedDay) => calenderDaysBox(
               day,
@@ -110,8 +110,8 @@ class NavigationCalendar extends GetView<TodoListController> {
   Container getChevIcon(IconData data) {
     return Container(
       decoration:
-          BoxDecoration(color: Color(0xffb4b4da), shape: BoxShape.circle),
-      padding: EdgeInsetsDirectional.all(5),
+          const BoxDecoration(color: Color(0xffb4b4da), shape: BoxShape.circle),
+      padding: const EdgeInsetsDirectional.all(5),
       child: Icon(
         data,
         color: Colors.white,

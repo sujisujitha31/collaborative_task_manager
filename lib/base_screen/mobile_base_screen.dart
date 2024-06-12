@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'desktop_base_screen.dart';
 
 class MobileBaseScreen extends StatelessWidget {
   const MobileBaseScreen({
