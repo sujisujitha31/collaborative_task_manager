@@ -98,7 +98,7 @@ class TodoListController extends GetxController {
               onPressed: () {
                 makeDone(isDone, todo);
               },
-              child: u.TextWithDmSans(
+              child: const u.TextWithDmSans(
                 text: "Yes",
               ))
         ]);

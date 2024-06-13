@@ -6,7 +6,7 @@ class TabletTodoListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("we are working in this field"),
+      child: const Text("we are working in this field"),
     );
   }
 }

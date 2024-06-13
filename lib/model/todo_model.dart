@@ -55,14 +55,14 @@ class TodoModel {
         status: data["status"]);
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["id"] = id;
-    _data["title"] = title;
-    _data["description"] = description;
-    _data["dateTime"] = dateTime;
-    _data["priority"] = priority;
-    _data["type"] = type;
-    _data["status"] = status;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["id"] = id;
+    data["title"] = title;
+    data["description"] = description;
+    data["dateTime"] = dateTime;
+    data["priority"] = priority;
+    data["type"] = type;
+    data["status"] = status;
+    return data;
   }
 }

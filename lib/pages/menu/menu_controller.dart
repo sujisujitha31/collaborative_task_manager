@@ -25,7 +25,7 @@ class SideMenuController extends GetxController {
     Icons.person,
     Icons.logout
   ];
-  Map desktopPages = {0: DesktopTodoListView(), 1: DesktopTodoListView()};
-  Map tabletPages = {0: TabletTodoListView(), 1: TabletTodoListView()};
+  Map desktopPages = {0: const DesktopTodoListView(), 1: const DesktopTodoListView()};
+  Map tabletPages = {0: const TabletTodoListView(), 1: const TabletTodoListView()};
   Map mobilePages = {0: MobileTodoListView(), 1: MobileTodoListView()};
 }

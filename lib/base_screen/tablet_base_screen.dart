@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'desktop_base_screen.dart';
 
 class TabletBaseScreen extends StatelessWidget {
   const TabletBaseScreen({

@@ -143,10 +143,10 @@ showAddItemDialog(double h, double w) {
                     u.vFill(20),
                     Row(
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 20),
                                 backgroundColor: c.purpleTheme),
                             onPressed: () {},
@@ -180,13 +180,13 @@ getSizedBox(double w, String title, Widget child) {
 getAddItemSingleRow(Widget w1, Widget w2) {
   return Row(
     children: [
-      Spacer(),
+      const Spacer(),
       w1,
-      Spacer(
+      const Spacer(
         flex: 2,
       ),
       w2,
-      Spacer()
+      const Spacer()
     ],
   );
 }

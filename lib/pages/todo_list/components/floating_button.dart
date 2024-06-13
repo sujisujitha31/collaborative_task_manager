@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
-import 'package:todo_app/pages/login/login_controller.dart';
 
 import '../../add_item/add_item_view.dart';
 

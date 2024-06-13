@@ -141,7 +141,7 @@ showWarning(String title, String msg) {
                     padding: const EdgeInsets.only(left: 10),
                     child: TextWithDmSans(
                       text: msg,
-                      color: Color(0xFF2F80EC),
+                      color: const Color(0xFF2F80EC),
                       maxLine: 3,
                     ),
                   ),
@@ -155,7 +155,7 @@ showWarning(String title, String msg) {
                       onTap: () {
                         Get.back();
                       },
-                      child: Icon(Icons.close)),
+                      child: const Icon(Icons.close)),
                 ),
               )
             ],

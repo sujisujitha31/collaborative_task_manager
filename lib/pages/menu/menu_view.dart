@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/pages/menu/menu_controller.dart';
 import 'package:todo_app/utils.dart' as u;
-import '../../constant.dart';
 
 class SideMenu extends GetView<SideMenuController> {
   const SideMenu({super.key});

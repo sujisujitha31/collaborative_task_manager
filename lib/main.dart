@@ -18,8 +18,6 @@ void main() async {
   Get.put(AddItemController());
   Get.put(TodoListController());
   Get.put(LoginController());
-  // print("just check cicd settedup or not ");
-  // print("i just finished cicd setup");
   runApp(const MyApp());
 }
 
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }
