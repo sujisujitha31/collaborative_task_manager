@@ -11,7 +11,9 @@ import '../todo_list/desktop_todo_list_view.dart';
 
 class SideMenuController extends GetxController {
   var selectedPage = 0.obs;
+  var previoulySelectedPage = 0.obs;
   goToPage(int index, {BuildContext? context}) {
+    previoulySelectedPage.value = selectedPage.value;
     selectedPage.value = index;
     if (selectedPage.value == menuTitles.length - 1) {
       showLogoutPopup();
@@ -19,7 +21,14 @@ class SideMenuController extends GetxController {
     if (selectedPage.value == 1) {
       double w = MediaQuery.of(context!).size.width * .5;
       double h = MediaQuery.of(context).size.height;
-      showAddItemDialog(h, w);
+      showAddItemDialog(
+        h,
+        w,
+        () {
+          selectedPage.value = previoulySelectedPage.value;
+          update();
+        },
+      );
     }
 
     update();
@@ -34,19 +43,19 @@ class SideMenuController extends GetxController {
   ];
   Map desktopPages = {
     0: const DesktopTodoListView(),
-    1: const DesktopTodoListView(),
+    1: SizedBox(),
     2: SizedBox(),
     3: SizedBox()
   };
   Map tabletPages = {
     0: const TabletTodoListView(),
-    1: const TabletTodoListView(),
+    1: SizedBox(),
     2: SizedBox(),
     3: SizedBox()
   };
   Map mobilePages = {
     0: MobileTodoListView(),
-    1: MobileTodoListView(),
+    1: SizedBox(),
     2: SizedBox(),
     3: SizedBox()
   };

@@ -13,29 +13,14 @@ class DescriptionField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Focus(
-        focusNode: controller.focus.value,
-        child: TextFormField(
-          style: GoogleFonts.roboto(fontSize: 12),
-          onSaved: (value) {
-            controller.focus.value.unfocus();
-          },
-          onEditingComplete: () {
-            // print("sjfbjds");
-          },
-          controller: controller.descriptionController,
-          maxLines: 5,
-          decoration: InputDecoration(
-              filled: true,
-              // fillColor: Colors.grey.shade200,
-              fillColor: Colors.blue.withOpacity(0.1),
-              focusedBorder:
-                  const OutlineInputBorder(borderSide: BorderSide.none),
-              enabledBorder:
-                  const OutlineInputBorder(borderSide: BorderSide.none)),
-        ),
-      ),
+    return TextFormField(
+      style: GoogleFonts.roboto(fontSize: 12),
+      controller: controller.descriptionController,
+      decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.blue.withOpacity(0.1),
+          focusedBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+          enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none)),
     );
   }
 }
