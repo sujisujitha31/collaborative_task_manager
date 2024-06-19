@@ -15,15 +15,16 @@ class PriorityRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const u.TextWithDmSans(
           text: "Show it on the top of Todo list",
           fontSize: 12,
           color: Colors.black45,
         ),
+        const Spacer(),
         Transform.scale(
-            scale: 2.0,
+            scale: 1.5,
             child: Obx(
               () => Checkbox(
                   activeColor: violet,
@@ -34,7 +35,10 @@ class PriorityRow extends StatelessWidget {
                   onChanged: (bool? val) {
                     controller.goingToMakePriority.value = val!;
                   }),
-            ))
+            )),
+        const Spacer(
+          flex: 2,
+        ),
       ],
     );
   }

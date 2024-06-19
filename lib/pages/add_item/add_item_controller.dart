@@ -23,6 +23,13 @@ class AddItemController extends GetxController {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController collbName = TextEditingController();
   TextEditingController collabMail = TextEditingController();
+
+  createTask() {
+    if (validateInputs()) {
+      storeDataToDb();
+    }
+  }
+
   storeDataToDb() async {
     u.showLoading("creating");
     TodoModel todoData = TodoModel.fromJson({});
@@ -53,14 +60,23 @@ class AddItemController extends GetxController {
         clearCollabDetails();
         Get.find<TodoListController>().searchByToday();
         Get.find<TodoListController>().getTodos();
-        Get.back();
+        // Get.back();
         u.closeLoading();
         u.showWarning("", data);
       },
       onErrror: (fail) {
+        u.closeLoading();
         u.showWarning("", fail);
       },
     );
+  }
+
+  validateInputs() {
+    if (titleController.text.isEmpty) {
+      u.showWarning("Warning", "Please give title of the task");
+      return false;
+    }
+    return true;
   }
 
   showDialogForAddCollaborator(double w) {
