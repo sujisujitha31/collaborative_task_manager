@@ -10,42 +10,35 @@ import '../add_item/desktop_add_item.dart';
 import '../todo_list/desktop_todo_list_view.dart';
 
 class SideMenuController extends GetxController {
-  var selectedPage = 0.obs;
-  var previoulySelectedPage = 0.obs;
-  goToPage(int index, {BuildContext? context}) {
+  var selectedPage = "task".obs;
+  var previoulySelectedPage = "".obs;
+  goToPage(String index, {BuildContext? context}) {
     previoulySelectedPage.value = selectedPage.value;
     selectedPage.value = index;
-    if (selectedPage.value == menuTitles.length - 1) {
+    if (selectedPage.value == "logout") {
       showLogoutPopup();
-    }
-    if (selectedPage.value == 1) {
-      double w = MediaQuery.of(context!).size.width * .5;
-      double h = MediaQuery.of(context).size.height;
-      showAddItemDialog(
-        h,
-        w,
-        () {
-          selectedPage.value = previoulySelectedPage.value;
-          update();
-        },
-      );
     }
 
     update();
   }
 
-  List<String> menuTitles = ["Tasks", "Add task", "Profile", "Logout"];
-  List<IconData> icons = [
-    Icons.task,
-    Icons.add_circle_rounded,
-    Icons.person,
-    Icons.logout
-  ];
+  Map<String, String> menuTitles = {
+    "task": "Tasks",
+    "create-task": "Add task",
+    "profile": "Profile",
+    "logout": "Logout"
+  };
+  Map<String, IconData> icons = {
+    "task": Icons.task,
+    "create-task": Icons.add_circle_rounded,
+    "profile": Icons.person,
+    "logout": Icons.logout
+  };
   Map desktopPages = {
-    0: const DesktopTodoListView(),
-    1: SizedBox(),
-    2: SizedBox(),
-    3: SizedBox()
+    "task": const DesktopTodoListView(),
+    "create-task": DesktopAddITemView(),
+    "profile": SizedBox(),
+    "logout": SizedBox()
   };
   Map tabletPages = {
     0: const TabletTodoListView(),

@@ -32,25 +32,36 @@ class SideMenu extends GetView<SideMenuController> {
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
                     onTap: () {
-                      controller.goToPage(index, context: context);
+                      controller.goToPage(
+                          controller.menuTitles.entries.toList()[index].key,
+                          context: context);
                     },
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       padding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 20),
                       decoration: BoxDecoration(
-                          borderRadius: index == controller.selectedPage.value
+                          borderRadius: controller.menuTitles.entries
+                                      .toList()[index]
+                                      .key ==
+                                  controller.selectedPage.value
                               ? BorderRadius.circular(10)
                               : null,
-                          color: index == controller.selectedPage.value
+                          color: controller.menuTitles.entries
+                                      .toList()[index]
+                                      .key ==
+                                  controller.selectedPage.value
                               ? Colors.white
                               : null),
                       child: Row(
                         children: [
                           // u.hFill(5),
                           Icon(
-                            controller.icons[index],
-                            color: index == controller.selectedPage.value
+                            controller.icons.entries.toList()[index].value,
+                            color: controller.menuTitles.entries
+                                        .toList()[index]
+                                        .key ==
+                                    controller.selectedPage.value
                                 ? const Color(0xff4e4dac)
                                 : Colors.white,
                             // size: 35,
@@ -58,8 +69,13 @@ class SideMenu extends GetView<SideMenuController> {
                           // u.hFill(5),
                           const Spacer(),
                           u.TextWithDmSans(
-                            text: controller.menuTitles[index],
-                            color: index == controller.selectedPage.value
+                            text: controller.menuTitles.entries
+                                .toList()[index]
+                                .value,
+                            color: controller.menuTitles.entries
+                                        .toList()[index]
+                                        .key ==
+                                    controller.selectedPage.value
                                 ? const Color(0xff4e4dac)
                                 : Colors.white,
                             //  index == controller.selectedPage.value

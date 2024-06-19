@@ -85,9 +85,7 @@ class AddItemScreen extends GetView<AddItemController> {
                                 borderRadius: BorderRadius.circular(28)),
                             shadowColor: violet),
                         onPressed: () {
-                          if (controller.validate()) {
-                            controller.storeDataToDb();
-                          }
+                          controller.createTask();
                         },
                         child: const u.TextWithDmSans(
                           text: "Save",

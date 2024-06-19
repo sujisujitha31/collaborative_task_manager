@@ -21,90 +21,112 @@ class DesktopAddITemView extends GetView<AddItemController> {
     return Row(
       children: [
         u.hFill(5),
-        Container(
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10))),
-          width: w * .5,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: 70,
-                child: Row(
-                  children: [
-                    u.hFill(20),
-                    u.TextWithDmSans(
-                      text: "Create New Task",
-                      fontSize: 18,
-                      weight: FontWeight.w500,
-                      color: c.purpleTheme,
-                    ),
-                  ],
-                ),
-              ),
-              getSizedBox(w * .45, "Title", TitleField(controller: controller)),
-              u.vFill(10),
-              getSizedBox(
-                w * .45,
-                "Description",
-                DescriptionField(
-                  controller: controller,
-                ),
-              ),
-              u.vFill(10),
-              getSizedBox(
-                w * .45,
-                "Collab-with",
-                CollaborationWidget(
-                  w: w * .45,
-                  controller: controller,
-                ),
-              ),
-              u.vFill(10),
-              getSizedBox(
-                w * .45,
-                "Date",
-                TapCalendar(
-                  controller: controller,
-                  h: h,
-                  w: w,
-                ),
-              ),
-              u.vFill(10),
-              getSizedBox(
-                w * .45,
-                "Priority",
-                PriorityRow(
-                  controller: controller,
-                ),
-              ),
-              u.vFill(20),
-              Row(
-                children: [
-                  const Spacer(),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          backgroundColor: c.purpleTheme),
-                      onPressed: () {
-                        controller.storeDataToDb();
-                      },
-                      child: const u.TextWithDmSans(
-                        text: "Create",
-                        color: Colors.white,
-                        fontSize: 16,
-                        weight: FontWeight.w500,
-                      ))
-                ],
-              ),
-              u.vFill(15)
-            ],
-          ),
-        ),
+        FillUpWidget(w: w * .5, controller: controller, h: h),
       ],
+    );
+  }
+}
+
+class FillUpWidget extends StatelessWidget {
+  const FillUpWidget({
+    super.key,
+    required this.w,
+    required this.controller,
+    required this.h,
+  });
+
+  final double w;
+  final AddItemController controller;
+  final double h;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+      width: w,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 70,
+            child: Row(
+              children: [
+                u.hFill(w * .02),
+                u.TextWithDmSans(
+                  text: "Create New Task",
+                  fontSize: 18,
+                  weight: FontWeight.w500,
+                  color: c.purpleTheme,
+                ),
+              ],
+            ),
+          ),
+          getSizedBox(w * .95, "Title", TitleField(controller: controller)),
+          u.vFill(10),
+          getSizedBox(
+            w * .95,
+            "Description",
+            DescriptionField(
+              controller: controller,
+            ),
+          ),
+          u.vFill(10),
+          getSizedBox(
+            w * .95,
+            "Collab-with",
+            CollaborationWidget(
+              w: w * .45,
+              controller: controller,
+            ),
+          ),
+          u.vFill(10),
+          getSizedBox(
+            w * .95,
+            "Date",
+            TapCalendar(
+              controller: controller,
+              h: h,
+              w: w,
+            ),
+          ),
+          u.vFill(10),
+          getSizedBox(
+            w * .95,
+            "Priority",
+            PriorityRow(
+              controller: controller,
+            ),
+          ),
+          u.vFill(20),
+          SizedBox(
+            width: w * .95,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // const Spacer(),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
+                        backgroundColor: c.purpleTheme),
+                    onPressed: () {
+                      controller.createTask();
+                    },
+                    child: const u.TextWithDmSans(
+                      text: "Create",
+                      color: Colors.white,
+                      fontSize: 16,
+                      weight: FontWeight.w500,
+                    ))
+              ],
+            ),
+          ),
+          u.vFill(15)
+        ],
+      ),
     );
   }
 }
