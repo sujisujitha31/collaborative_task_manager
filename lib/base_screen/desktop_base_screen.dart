@@ -16,7 +16,17 @@ class DesktopBaseScreen extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(width: w * .17, child: buildDrawer(context)),
-              SizedBox(width: w * .83, child: buildBodyContent(context))
+              SizedBox(
+                  width: w * .83,
+                  child: Column(
+                    children: [
+                      // Container(
+                      //   height: 70,
+                      //   child: SizedBox(),
+                      // ),
+                      buildBodyContent(context)
+                    ],
+                  ))
             ],
           ),
         ));
