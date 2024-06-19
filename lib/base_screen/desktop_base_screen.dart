@@ -11,6 +11,7 @@ class DesktopBaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xfff5f5fa),
         body: SafeArea(
           child: Row(
