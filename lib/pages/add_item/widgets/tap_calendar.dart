@@ -25,15 +25,13 @@ class TapCalendar extends StatelessWidget {
         controller.selectedDate.value = await showDatePicker(
                 context: context,
                 initialDate: controller.selectedDate.value,
-                firstDate: DateTime(2023, 01, 01),
+                firstDate: DateTime.now(),
                 lastDate: DateTime(2050, 01, 01)) ??
             controller.selectedDate.value;
       },
       child: Obx(
         () => Container(
           padding: const EdgeInsets.symmetric(vertical: 15),
-          // height: h * .08,
-          // width: w * .9,
           decoration: BoxDecoration(
               border: Border.all(), borderRadius: BorderRadius.circular(7)),
           child: Center(
