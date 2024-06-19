@@ -11,168 +11,102 @@ import 'package:todo_app/utils.dart' as u;
 
 import 'add_item_view.dart';
 
-showAddItemDialog(double h, double w, Function() whilePressBack) {
-  final controller = Get.find<AddItemController>();
-  return Get.dialog(Material(
-    type: MaterialType.transparency,
-    child: WillPopScope(
-      onWillPop: () {
-        whilePressBack();
-        return Future.value(true);
-      },
-      child: Center(
-        // mainAxisSize: MainAxisSize.min,
-        child: Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10))),
-            width: w,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  // padding: EdgeInsets.symmetric(horizontal: 10,
-                  decoration: BoxDecoration(
+class DesktopAddITemView extends GetView<AddItemController> {
+  const DesktopAddITemView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width * .8;
+    double h = MediaQuery.of(context).size.height;
+    return Row(
+      children: [
+        u.hFill(5),
+        Container(
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+          width: w * .5,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 70,
+                child: Row(
+                  children: [
+                    u.hFill(20),
+                    u.TextWithDmSans(
+                      text: "Create New Task",
+                      fontSize: 18,
+                      weight: FontWeight.w500,
                       color: c.purpleTheme,
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10))),
-                  height: 70,
-                  child: Row(
-                    children: [
-                      const Spacer(),
-                      const u.TextWithDmSans(
-                        text: "Create New Task",
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {
-                          whilePressBack();
-                          Get.back();
-                        },
-                        child: const Icon(
-                          Icons.close,
-                          color: Colors.white,
-                        ),
-                      ),
-                      u.hFill(10)
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Column(
-                    children: [
-                      /* Row(
-                        children: [
-                          const Spacer(),
-                          getSizedBox(w * .45, "Title",
-                              TitleField(controller: controller)),
-                          const Spacer(),
-                          getSizedBox(w * .45, "Time", TapTime(w * .45)),
-                          const Spacer(),
-                        ],
-                      ),*/
-                      getAddItemSingleRow(
-                        getSizedBox(w * .45, "Title",
-                            TitleField(controller: controller)),
-                        getSizedBox(w * .45, "Time", TapTime(w * .45)),
-                      ),
-                      u.vFill(10),
-                      /* Row(
-                        children: [
-                          const Spacer(),
-                          getSizedBox(
-                            w * .45,
-                            "Description",
-                            DescriptionField(
-                              controller: controller,
-                            ),
-                          ),
-                          const Spacer(),
-                          getSizedBox(
-                            w * .45,
-                            "Collab-with",
-                            CollaborationWidget(
-                              w: w * .45,
-                              controller: controller,
-                            ),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),*/
-                      u.vFill(10),
-                      getAddItemSingleRow(
-                        getSizedBox(
-                          w * .45,
-                          "Description",
-                          DescriptionField(
-                            controller: controller,
-                          ),
-                        ),
-                        getSizedBox(
-                          w * .45,
-                          "Collab-with",
-                          CollaborationWidget(
-                            w: w * .45,
-                            controller: controller,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          const Spacer(),
-                          getSizedBox(
-                            w * .45,
-                            "Date",
-                            TapCalendar(
-                              controller: controller,
-                              h: h,
-                              w: w,
-                            ),
-                          ),
-                          const Spacer(),
-                          getSizedBox(
-                            w * .45,
-                            "Priority",
-                            PriorityRow(
-                              controller: controller,
-                            ),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                      u.vFill(20),
-                      Row(
-                        children: [
-                          const Spacer(),
-                          ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 20),
-                                  backgroundColor: c.purpleTheme),
-                              onPressed: () {},
-                              child: const u.TextWithDmSans(
-                                text: "Create",
-                                color: Colors.white,
-                                fontSize: 16,
-                                weight: FontWeight.w500,
-                              ))
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )),
-      ),
-    ),
-  ));
+              ),
+              getSizedBox(w * .45, "Title", TitleField(controller: controller)),
+              u.vFill(10),
+              getSizedBox(
+                w * .45,
+                "Description",
+                DescriptionField(
+                  controller: controller,
+                ),
+              ),
+              u.vFill(10),
+              getSizedBox(
+                w * .45,
+                "Collab-with",
+                CollaborationWidget(
+                  w: w * .45,
+                  controller: controller,
+                ),
+              ),
+              u.vFill(10),
+              getSizedBox(
+                w * .45,
+                "Date",
+                TapCalendar(
+                  controller: controller,
+                  h: h,
+                  w: w,
+                ),
+              ),
+              u.vFill(10),
+              getSizedBox(
+                w * .45,
+                "Priority",
+                PriorityRow(
+                  controller: controller,
+                ),
+              ),
+              u.vFill(20),
+              Row(
+                children: [
+                  const Spacer(),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          backgroundColor: c.purpleTheme),
+                      onPressed: () {
+                        controller.storeDataToDb();
+                      },
+                      child: const u.TextWithDmSans(
+                        text: "Create",
+                        color: Colors.white,
+                        fontSize: 16,
+                        weight: FontWeight.w500,
+                      ))
+                ],
+              ),
+              u.vFill(15)
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 getSizedBox(double w, String title, Widget child) {
