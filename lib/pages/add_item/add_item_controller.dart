@@ -24,14 +24,17 @@ class AddItemController extends GetxController {
   TextEditingController collbName = TextEditingController();
   TextEditingController collabMail = TextEditingController();
   storeDataToDb() async {
+    u.showLoading("creating");
     TodoModel todoData = TodoModel.fromJson({});
 
     String uniqueId = DateTime(
       selectedDate.value.year,
       selectedDate.value.month,
       selectedDate.value.day,
-      startTime!.hour,
-      startTime!.minute,
+      // startTime!.hour,
+      // startTime!.minute,
+      DateTime.now().hour,
+      DateTime.now().minute,
       DateTime.now().second,
     ).millisecondsSinceEpoch.toString();
     todoData.type = "todo";
@@ -51,6 +54,7 @@ class AddItemController extends GetxController {
         Get.find<TodoListController>().searchByToday();
         Get.find<TodoListController>().getTodos();
         Get.back();
+        u.closeLoading();
         u.showWarning("", data);
       },
       onErrror: (fail) {

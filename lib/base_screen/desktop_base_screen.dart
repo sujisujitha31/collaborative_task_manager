@@ -11,12 +11,23 @@ class DesktopBaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xfff5f5fa),
         body: SafeArea(
           child: Row(
             children: [
               SizedBox(width: w * .17, child: buildDrawer(context)),
-              SizedBox(width: w * .83, child: buildBodyContent(context))
+              SizedBox(
+                  width: w * .83,
+                  child: Column(
+                    children: [
+                      // Container(
+                      //   height: 70,
+                      //   child: SizedBox(),
+                      // ),
+                      buildBodyContent(context)
+                    ],
+                  ))
             ],
           ),
         ));
