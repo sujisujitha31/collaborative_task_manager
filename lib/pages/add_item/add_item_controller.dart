@@ -51,6 +51,9 @@ class AddItemController extends GetxController {
     todoData.priority = goingToMakePriority.value;
     todoData.id = uniqueId;
     todoData.status = false;
+    for (int i = 0; i < g.collabUsers.length; i++) {
+      storeCollaboratorsTask(todoData, uniqueId, g.collabUsers[i]["email"]);
+    }
     FirebaseDatabase().storeData(
       g.userMail,
       todoData,
@@ -68,6 +71,16 @@ class AddItemController extends GetxController {
         u.closeLoading();
         u.showWarning("", fail);
       },
+    );
+  }
+
+  storeCollaboratorsTask(TodoModel todo, String uniqueId, String usersMail) {
+    FirebaseDatabase().storeData(
+      usersMail,
+      todo,
+      uniqueId,
+      onSuccess: (data) {},
+      onErrror: (fail) {},
     );
   }
 
@@ -278,7 +291,7 @@ class AddItemController extends GetxController {
     update();
   }
 
-  showAddCollabPopup() {
+  showAddCollabaratorToTask() {
     if (selectedCollabBool.isEmpty) {
       makeAllUnSelected();
     }

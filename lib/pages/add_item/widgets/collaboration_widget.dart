@@ -60,7 +60,7 @@ class CollaborationWidget extends StatelessWidget {
               : TextFormField(
                   readOnly: true,
                   onTap: () {
-                    controller.showAddCollabPopup();
+                    controller.showAddCollabaratorToTask();
                   },
                   decoration: InputDecoration(
                       hintStyle: GoogleFonts.dmSans(fontSize: 12),

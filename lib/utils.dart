@@ -129,7 +129,7 @@ showWarning(String title, String msg) {
         return Container(
           decoration: BoxDecoration(color: Colors.blue.withOpacity(0.2)),
           height: h * .1,
-          width: w,
+          width: w * 10,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

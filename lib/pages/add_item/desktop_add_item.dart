@@ -78,7 +78,7 @@ class FillUpWidget extends StatelessWidget {
             w * .95,
             "Collab-with",
             CollaborationWidget(
-              w: w * .45,
+              w: w * .95,
               controller: controller,
             ),
           ),
@@ -106,7 +106,6 @@ class FillUpWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                // const Spacer(),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
