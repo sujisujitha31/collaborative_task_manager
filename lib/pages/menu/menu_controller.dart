@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
+import 'package:todo_app/pages/add_item/add_item_controller.dart';
 import 'package:todo_app/pages/login/login_controller.dart';
 import 'package:todo_app/pages/todo_list/mobile_todo_list_view.dart';
 import 'package:todo_app/pages/todo_list/tablet_todo_list_view.dart';
@@ -17,6 +18,8 @@ class SideMenuController extends GetxController {
     selectedPage.value = index;
     if (selectedPage.value == "logout") {
       showLogoutPopup();
+    } else if (selectedPage.value == "create-task") {
+      Get.find<AddItemController>().makeAllUnSelected();
     }
 
     update();

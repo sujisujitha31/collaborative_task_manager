@@ -51,8 +51,8 @@ class AddItemController extends GetxController {
     todoData.priority = goingToMakePriority.value;
     todoData.id = uniqueId;
     todoData.status = false;
-    for (int i = 0; i < g.collabUsers.length; i++) {
-      storeCollaboratorsTask(todoData, uniqueId, g.collabUsers[i]["email"]);
+    for (int i = 0; i < selectedCollabIds.length; i++) {
+      storeCollaboratorsTask(todoData, uniqueId, selectedCollabIds[i]);
     }
     FirebaseDatabase().storeData(
       g.userMail,
@@ -272,7 +272,8 @@ class AddItemController extends GetxController {
   }
 
   var selectedCollabBool = [].obs;
-  List selectedCollabIds = [];
+  List<String> selectedCollabIds = [];
+  var selectedCollabNames = <String>[].obs;
 
   makeAllUnSelected() {
     for (int i = 0; i < g.collabUsers.length; i++) {
@@ -288,13 +289,23 @@ class AddItemController extends GetxController {
     } else {
       selectedCollabIds.remove(id);
     }
+    getAllCollabNames();
+    update();
+  }
+
+  getAllCollabNames() {
+    selectedCollabNames.value = [];
+    for (int i = 0; i < g.collabUsers.length; i++) {
+      for (int j = 0; j < selectedCollabIds.length; j++) {
+        if (g.collabUsers[i]["email"] == selectedCollabIds[j]) {
+          selectedCollabNames.add(g.collabUsers[i]["name"]);
+        }
+      }
+    }
     update();
   }
 
   showAddCollabaratorToTask() {
-    if (selectedCollabBool.isEmpty) {
-      makeAllUnSelected();
-    }
     Get.defaultDialog(
         title: "Collaborators",
         content: Column(
