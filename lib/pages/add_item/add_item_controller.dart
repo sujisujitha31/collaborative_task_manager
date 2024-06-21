@@ -189,7 +189,7 @@ class AddItemController extends GetxController {
   }
 
   clearData() {
-    selectedCollabBool.value = [];
+    makeAllUnSelected();
     selectedCollabIds = [];
 
     goingToMakePriority.value = false;
