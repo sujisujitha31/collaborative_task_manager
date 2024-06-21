@@ -122,6 +122,8 @@ showWarning(String title, String msg) {
   //     backgroundColor: Colors.blue.shade50,
   //     colorText: Colors.blue);
   showModalBottomSheet(
+      constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(Get.overlayContext!).size.width),
       context: Get.overlayContext!,
       builder: (context) {
         double h = MediaQuery.of(context).size.height;
@@ -129,7 +131,7 @@ showWarning(String title, String msg) {
         return Container(
           decoration: BoxDecoration(color: Colors.blue.withOpacity(0.2)),
           height: h * .1,
-          width: w * 10,
+          // width: w * 10,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
