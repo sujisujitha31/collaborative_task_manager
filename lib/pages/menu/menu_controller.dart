@@ -39,21 +39,21 @@ class SideMenuController extends GetxController {
   };
   Map desktopPages = {
     "task": const DesktopTodoListView(),
-    "create-task": DesktopAddITemView(),
-    "profile": SizedBox(),
-    "logout": SizedBox()
+    "create-task": const DesktopAddITemView(),
+    "profile": const SizedBox(),
+    "logout": const SizedBox()
   };
   Map tabletPages = {
-    0: const TabletTodoListView(),
-    1: SizedBox(),
-    2: SizedBox(),
-    3: SizedBox()
+    "task": const TabletTodoListView(),
+    "create-task": const SizedBox(),
+    "profile": const SizedBox(),
+    "logout": const SizedBox()
   };
   Map mobilePages = {
-    0: MobileTodoListView(),
-    1: SizedBox(),
-    2: SizedBox(),
-    3: SizedBox()
+    "task": MobileTodoListView(),
+    "create-task": const SizedBox(),
+    "profile": const SizedBox(),
+    "logout": const SizedBox()
   };
 }
 
