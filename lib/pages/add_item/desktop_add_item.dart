@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart' as c;
@@ -18,21 +20,49 @@ class DesktopAddITemView extends GetView<AddItemController> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width * .8;
     double h = MediaQuery.of(context).size.height;
+    return AddItemBodyWidget(w: w, controller: controller, h: h);
+  }
+}
+
+class AddItemBodyWidget extends StatelessWidget {
+  const AddItemBodyWidget({
+    super.key,
+    required this.w,
+    required this.controller,
+    required this.h,
+  });
+
+  final double w;
+  final AddItemController controller;
+  final double h;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
-        u.vFill(20),
-        Row(
-          children: [
-            const Spacer(
-              flex: 1,
-            ),
-            FillUpWidget(w: w * .5, controller: controller, h: h),
-            const Spacer(),
-            Container(
-              width: w * .5,
-            ),
-            const Spacer(),
-          ],
+        // u.vFill(20),
+        SizedBox(
+          width: w,
+          child: Row(
+            children: [
+              const Spacer(
+                flex: 1,
+              ),
+              FillUpWidget(w: w * .5, controller: controller, h: h),
+              const Spacer(),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: w * .0250),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        bottomLeft: Radius.circular(40))),
+                width: w * .5,
+              ),
+              const Spacer(),
+            ],
+          ),
         ),
       ],
     );
@@ -55,13 +85,14 @@ class FillUpWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AddItemController>(builder: (cont) {
       return Container(
+        margin: const EdgeInsets.symmetric(vertical: 20),
         padding: EdgeInsets.symmetric(horizontal: w * .0250),
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+                topLeft: Radius.circular(40), bottomLeft: Radius.circular(40))),
         width: w,
-        height: h * .9,
+        // height: h,
         child: SingleChildScrollView(
           primary: true,
           child: Column(

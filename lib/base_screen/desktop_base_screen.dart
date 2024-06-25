@@ -3,8 +3,8 @@ import '../pages/menu/menu_view.dart';
 
 class DesktopBaseScreen extends StatelessWidget {
   const DesktopBaseScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @mustCallSuper
   @override
@@ -20,13 +20,7 @@ class DesktopBaseScreen extends StatelessWidget {
               SizedBox(
                   width: w * .83,
                   child: Column(
-                    children: [
-                      // Container(
-                      //   height: 70,
-                      //   child: SizedBox(),
-                      // ),
-                      buildBodyContent(context)
-                    ],
+                    children: [buildBodyContent(context)],
                   ))
             ],
           ),
@@ -40,40 +34,8 @@ class DesktopBaseScreen extends StatelessWidget {
 
 // this is content area
   buildBodyContent(BuildContext context) {
-    return const SizedBox(
-        // width: MediaQuery.of(context).size.width * .83,
-        );
+    return const SizedBox();
   }
-
-  /* buildBodyScreen(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width * .83,
-      child: SingleChildScrollView(
-        child: GetBuilder(builder: (cont) {
-          return Column(
-            children: [
-              Container(
-                color: Colors.white,
-                height: 70,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    children: const [],
-                  ),
-                ),
-              ),
-              Container(
-                  color: Colors.grey.shade100,
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: buildBodyContent(context)))
-            ],
-          );
-        }),
-      ),
-    );
-  }*/
 }
 
 class Footer extends StatelessWidget {
