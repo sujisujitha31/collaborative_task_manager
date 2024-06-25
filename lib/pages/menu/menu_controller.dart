@@ -8,6 +8,7 @@ import 'package:todo_app/pages/todo_list/tablet_todo_list_view.dart';
 import 'package:todo_app/utils.dart';
 
 import '../add_item/desktop_add_item.dart';
+import '../add_item/tablet_add_item.dart';
 import '../todo_list/desktop_todo_list_view.dart';
 
 class SideMenuController extends GetxController {
@@ -45,7 +46,7 @@ class SideMenuController extends GetxController {
   };
   Map tabletPages = {
     "task": const TabletTodoListView(),
-    "create-task": const SizedBox(),
+    "create-task": const TabletAddITemView(),
     "profile": const SizedBox(),
     "logout": const SizedBox()
   };
