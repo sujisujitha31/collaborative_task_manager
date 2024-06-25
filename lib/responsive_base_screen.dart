@@ -39,10 +39,7 @@ class Desktop extends DesktopBaseScreen {
 }
 
 class Tablet extends TabletBaseScreen {
-  const Tablet({Key? key})
-      : super(
-          key: key,
-        );
+  const Tablet({super.key});
 
   @override
   buildBodyContent(BuildContext context) {
@@ -52,10 +49,7 @@ class Tablet extends TabletBaseScreen {
 }
 
 class Mobile extends MobileBaseScreen {
-  Mobile({Key? key})
-      : super(
-          key: key,
-        );
+  Mobile({super.key});
   final controller = Get.find<SideMenuController>();
   @override
   buildBodyContent(BuildContext context) {

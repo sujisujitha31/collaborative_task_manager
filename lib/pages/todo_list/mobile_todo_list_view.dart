@@ -44,7 +44,7 @@ class NavigationCalendar extends GetView<TodoListController> {
   Widget build(BuildContext context) {
     return GetBuilder<TodoListController>(builder: (cont) {
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        // padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         width: w,
         decoration: const BoxDecoration(
             // color: Colors.blue.withOpacity(0.1),

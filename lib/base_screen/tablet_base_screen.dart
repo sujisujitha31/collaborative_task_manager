@@ -8,8 +8,13 @@ class TabletBaseScreen extends StatelessWidget {
   @mustCallSuper
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [buildDrawer(context), buildBodyContent(context)],
+    return Scaffold(
+      body: Row(
+        children: [
+          // buildDrawer(context),
+          buildBodyContent(context)
+        ],
+      ),
     );
   }
 
