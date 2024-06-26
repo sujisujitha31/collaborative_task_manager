@@ -15,6 +15,7 @@ class SideMenuController extends GetxController {
   var selectedPage = "task".obs;
   var previoulySelectedPage = "".obs;
   goToPage(String index, {BuildContext? context}) {
+    Get.back();
     previoulySelectedPage.value = selectedPage.value;
     selectedPage.value = index;
     if (selectedPage.value == "logout") {
