@@ -71,7 +71,7 @@ class Calendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // height: double.infinity,
-      height: h * .9,
+      height: h * .8,
       // color: Colors.white,
       decoration: BoxDecoration(
           boxShadow: u.getBoxShadow(),
