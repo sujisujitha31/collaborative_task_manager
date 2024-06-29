@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/pages/todo_list/todo_list_controller.dart';
 import 'package:todo_app/globals.dart' as g;
+import 'package:todo_app/responsive.dart';
 import 'mobile_todo_list_view.dart';
 import 'package:todo_app/utils.dart' as u;
 
@@ -206,19 +207,18 @@ class HeaderRow extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            CircleAvatar(
-              maxRadius: 25,
-              minRadius: 25,
-              backgroundColor: orangeTheme,
-              // purpleTheme,
-              //  Color(0xc48894),
-              child: u.TextWithDmSans(
-                text: g.userMail[0],
-                weight: FontWeight.w500,
-                color: Colors.white,
-                fontSize: 23,
+            if (Responsive.isDesktop(context))
+              CircleAvatar(
+                maxRadius: 25,
+                minRadius: 25,
+                backgroundColor: orangeTheme,
+                child: u.TextWithDmSans(
+                  text: g.userMail[0],
+                  weight: FontWeight.w500,
+                  color: Colors.white,
+                  fontSize: 23,
+                ),
               ),
-            ),
             u.hFill(10),
           ],
         ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/base_screen/base_screen_controller.dart';
 import 'package:todo_app/utils.dart' as u;
-
+import 'package:todo_app/globals.dart' as g;
+import '../constant.dart';
 import '../pages/menu/menu_view.dart';
 
 class TabletBaseScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class TabletBaseScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: controller.scaffoldState,
-      drawer: SizedBox(width: width * .35, child: SideMenu()),
+      drawer: SizedBox(width: width * .35, child: const SideMenu()),
       body: Column(
         children: [
           Container(
@@ -27,15 +28,34 @@ class TabletBaseScreen extends StatelessWidget {
             // height * .1,
             child: Row(
               children: [
+                u.hFill(25),
                 InkWell(
                     onTap: () {
                       controller.scaffoldState.currentState?.openDrawer();
                     },
-                    child: Icon(Icons.menu))
+                    child: const Icon(Icons.menu)),
+                u.hFill(20),
+                const u.TextWithDmSans(
+                  text: "Title",
+                  fontSize: 18,
+                  weight: FontWeight.w700,
+                ),
+                const Spacer(),
+                CircleAvatar(
+                  maxRadius: 25,
+                  minRadius: 25,
+                  backgroundColor: orangeTheme,
+                  child: u.TextWithDmSans(
+                    text: g.userMail[0],
+                    weight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 23,
+                  ),
+                ),
+                u.hFill(10),
               ],
             ),
           ),
-          // buildDrawer(context),
           buildBodyContent(context)
         ],
       ),

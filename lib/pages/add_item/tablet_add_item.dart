@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
-
 import 'desktop_add_item.dart';
 
 class TabletAddITemView extends GetView<AddItemController> {
