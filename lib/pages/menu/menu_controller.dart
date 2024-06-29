@@ -19,7 +19,9 @@ class SideMenuController extends GetxController {
     previoulySelectedPage.value = selectedPage.value;
     selectedPage.value = index;
     if (selectedPage.value == "logout") {
-      showLogoutPopup();
+      showLogoutPopup(() {
+        selectedPage.value = previoulySelectedPage.value;
+      });
     } else if (selectedPage.value == "create-task") {
       Get.find<AddItemController>().makeAllUnSelected();
     }
@@ -59,8 +61,9 @@ class SideMenuController extends GetxController {
   };
 }
 
-showLogoutPopup() {
+showLogoutPopup(Function() getBack) {
   return Get.defaultDialog(
+      barrierDismissible: false,
       title: "Confirmation",
       content: const Padding(
         padding: EdgeInsets.symmetric(
@@ -79,6 +82,7 @@ showLogoutPopup() {
                 )),
             onPressed: () {
               Get.back();
+              getBack();
             },
             child: TextWithDmSans(
               text: "Cancel",
