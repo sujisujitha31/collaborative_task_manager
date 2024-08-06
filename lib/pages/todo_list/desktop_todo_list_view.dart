@@ -154,13 +154,13 @@ class TaskList extends StatelessWidget {
                         u.vFill(5),
                         u.TextWithDmSans(
                           text: controller.todoList[index].title!,
-                          maxLine: 2,
+                          maxLine: 1,
                           weight: FontWeight.w700,
                         ),
                         u.vFill(5),
                         u.TextWithDmSans(
                           text: cont.todoList[index].description!,
-                          maxLine: 3,
+                          maxLine: 1,
                           color: Colors.grey,
                         )
                       ],

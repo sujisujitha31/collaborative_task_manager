@@ -33,6 +33,7 @@ class TextWithDmSans extends StatelessWidget {
       this.color,
       this.weight,
       this.fontSize = 12,
+      this.overflow = TextOverflow.ellipsis,
       this.decoration,
       this.maxLine});
   final String text;
@@ -40,6 +41,7 @@ class TextWithDmSans extends StatelessWidget {
   final FontWeight? weight;
   final double? fontSize;
   final TextDecoration? decoration;
+  final TextOverflow? overflow;
   final int? maxLine;
 
   @override
@@ -51,6 +53,7 @@ class TextWithDmSans extends StatelessWidget {
           fontSize: fontSize,
           fontWeight: weight,
           decoration: decoration),
+      overflow: overflow,
       maxLines: maxLine,
     );
   }
@@ -77,22 +80,29 @@ showLoading(message) {
     builder: (_) => WillPopScope(
       onWillPop: () async => false,
       child: Center(
-        child: SizedBox(
-          width: 300,
-          child: Material(
-            type: MaterialType.transparency,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(
-                  strokeWidth: 5,
+        child: Material(
+          type: MaterialType.transparency,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 30,
+                height: 30,
+                padding: EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: Colors.white,
+                    boxShadow: getBoxShadow()),
+                child: CircularProgressIndicator(
+                  // value: 0.5,
+                  strokeWidth: 2.5,
                   color: violet,
                 ),
-                vFill(10),
-                Text('$message...',
-                    style: const TextStyle(fontSize: 20, color: Colors.white))
-              ],
-            ),
+              ),
+              vFill(10),
+              Text('$message...',
+                  style: const TextStyle(fontSize: 20, color: Colors.white))
+            ],
           ),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/firebase/firebase_database.dart';
 import 'package:todo_app/pages/login/desktop_login_view.dart';
 import 'package:todo_app/pages/login/mobile_login_view.dart';
+import 'package:todo_app/pages/menu/menu_controller.dart';
 import 'package:todo_app/pages/todo_list/todo_list_controller.dart';
 import 'package:todo_app/responsive_base_screen.dart';
 import 'package:todo_app/utils.dart' as u;
@@ -23,6 +24,7 @@ class LoginController extends GetxController {
   }
 
   validateEmailAndPassword() {
+    u.closeLoading();
     if (emailController.text.isEmpty) {
       u.showWarning("Warning", "Please Enter email id");
       return true;
@@ -38,22 +40,29 @@ class LoginController extends GetxController {
   }
 
   onLogin() {
-    if (validateEmailAndPassword()) {
-      return;
-    }
+    u.showLoading("Please wait...");
+    Future.delayed(const Duration(seconds: 1, milliseconds: 500), () {
+      if (validateEmailAndPassword()) {
+        return;
+      }
 
-    try {
-      FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text)
-          .then((user) {});
-    } on FirebaseAuthException catch (e) {
-      invalidLoginPopup();
-      print(e);
-    } catch (e) {
-      invalidLoginPopup();
-      print(e);
-    }
+      try {
+        FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text)
+            .then((user) {
+          Get.find<SideMenuController>().selectedPage.value = "task";
+        });
+      } on FirebaseAuthException catch (e) {
+        u.closeLoading();
+        invalidLoginPopup();
+        print(e);
+      } catch (e) {
+        u.closeLoading();
+        invalidLoginPopup();
+        print(e);
+      }
+    });
   }
 
   Future<dynamic> invalidLoginPopup() {

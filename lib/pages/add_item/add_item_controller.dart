@@ -63,6 +63,7 @@ class AddItemController extends GetxController {
         clearCollabDetails();
         Get.find<TodoListController>().searchByToday();
         Get.find<TodoListController>().getTodos();
+        // Get.find<SideMenuController>().goToPage("task");
         // Get.back();
         u.closeLoading();
         u.showWarning("", data);
@@ -95,55 +96,62 @@ class AddItemController extends GetxController {
   showDialogForAddCollaborator(double w) {
     return Get.defaultDialog(
         title: "Add collabrator",
+        titleStyle:
+            GoogleFonts.dmSans(fontSize: 15, fontWeight: FontWeight.w500),
         content: Padding(
             padding: const EdgeInsets.all(20),
             child: Obx(
               () => isStoringCollab.value
                   ? const CircularProgressIndicator()
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const u.TextWithDmSans(
-                          text: "Name",
-                          weight: FontWeight.w500,
+                  : SizedBox(
+                      height: 200,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const u.TextWithDmSans(
+                              text: "Name",
+                              weight: FontWeight.w500,
+                            ),
+                            u.vFill(10),
+                            TextFormField(
+                              controller: collbName,
+                              decoration: InputDecoration(
+                                  hintText: "Collaborator Name",
+                                  hintStyle: GoogleFonts.dmSans(fontSize: 12),
+                                  prefixIcon: Icon(
+                                    Icons.person,
+                                    color: violet,
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: violet)),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: violet))),
+                            ),
+                            u.vFill(20),
+                            const u.TextWithDmSans(
+                              text: "Email",
+                              weight: FontWeight.w500,
+                            ),
+                            u.vFill(10),
+                            TextFormField(
+                              controller: collabMail,
+                              decoration: InputDecoration(
+                                  hintText: "Collaborator Email",
+                                  hintStyle: GoogleFonts.dmSans(fontSize: 12),
+                                  prefixIcon: Icon(
+                                    Icons.mail_rounded,
+                                    color: violet,
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: violet)),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: violet))),
+                            ),
+                            u.vFill(20),
+                          ],
                         ),
-                        u.vFill(10),
-                        TextFormField(
-                          controller: collbName,
-                          decoration: InputDecoration(
-                              hintText: "Collaborator Name",
-                              hintStyle: GoogleFonts.dmSans(fontSize: 12),
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: violet,
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: violet)),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: violet))),
-                        ),
-                        u.vFill(20),
-                        const u.TextWithDmSans(
-                          text: "Email",
-                          weight: FontWeight.w500,
-                        ),
-                        u.vFill(10),
-                        TextFormField(
-                          controller: collabMail,
-                          decoration: InputDecoration(
-                              hintText: "Collaborator Email",
-                              hintStyle: GoogleFonts.dmSans(fontSize: 12),
-                              prefixIcon: Icon(
-                                Icons.mail_rounded,
-                                color: violet,
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: violet)),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: violet))),
-                        ),
-                        u.vFill(20),
-                      ],
+                      ),
                     ),
             )),
         actions: [
@@ -191,7 +199,7 @@ class AddItemController extends GetxController {
   clearData() {
     makeAllUnSelected();
     selectedCollabIds = [];
-
+    selectedCollabNames.value = [];
     goingToMakePriority.value = false;
     selectedDate.value = DateTime.now();
     titleController.clear();
