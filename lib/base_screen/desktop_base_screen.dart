@@ -10,6 +10,7 @@ class DesktopBaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xfff5f5fa),
@@ -18,6 +19,7 @@ class DesktopBaseScreen extends StatelessWidget {
             children: [
               SizedBox(width: w * .17, child: buildDrawer(context)),
               SizedBox(
+                  height: h,
                   width: w * .83,
                   child: Column(
                     children: [buildBodyContent(context)],

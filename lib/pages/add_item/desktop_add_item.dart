@@ -49,13 +49,16 @@ class AddItemBodyWidget extends StatelessWidget {
               const Spacer(),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 20),
-                padding: EdgeInsets.symmetric(horizontal: w * .0250),
+                padding: EdgeInsets.symmetric(horizontal: w * .025),
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
                         bottomLeft: Radius.circular(40))),
                 width: w * .5,
+                child: Column(
+                  children: [],
+                ),
               ),
               const Spacer(),
             ],
@@ -82,7 +85,8 @@ class FillUpWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AddItemController>(builder: (cont) {
       return Container(
-        margin: const EdgeInsets.symmetric(vertical: 20),
+        height: h * .95,
+        margin: EdgeInsets.symmetric(vertical: h * .02),
         padding: EdgeInsets.symmetric(horizontal: w * .0250),
         decoration: const BoxDecoration(
             color: Colors.white,
@@ -91,7 +95,6 @@ class FillUpWidget extends StatelessWidget {
         width: w,
         // height: h,
         child: SingleChildScrollView(
-          primary: true,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -134,26 +137,32 @@ class FillUpWidget extends StatelessWidget {
                   text: "The task is also visible for:",
                 ),
               if (controller.selectedCollabNames.isNotEmpty) u.vFill(10),
-              Row(
+              Wrap(
+                runSpacing: 10,
+                spacing: 10,
                 children: [
                   for (int i = 0;
                       i < controller.selectedCollabNames.length;
                       i++)
-                    Row(
-                      children: [
-                        CircleAvatar(
-                            maxRadius: 20,
-                            child: u.TextWithDmSans(
-                              text: controller.selectedCollabNames[i][0]
-                                  .toUpperCase(),
-                              weight: FontWeight.w500,
-                            )),
-                        u.hFill(10),
-                        u.TextWithDmSans(
-                          text: controller.selectedCollabNames[i],
-                        ),
-                        u.hFill(10),
-                      ],
+                    SizedBox(
+                      width: w * .3,
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                              maxRadius: 20,
+                              child: u.TextWithDmSans(
+                                text: controller.selectedCollabNames[i][0]
+                                    .toUpperCase(),
+                                weight: FontWeight.w500,
+                              )),
+                          u.hFill(10),
+                          u.TextWithDmSans(
+                            text: controller.selectedCollabNames[i],
+                            maxLine: 3,
+                          ),
+                          u.hFill(10),
+                        ],
+                      ),
                     )
                 ],
               ),
