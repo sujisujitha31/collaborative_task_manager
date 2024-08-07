@@ -347,4 +347,11 @@ class AddItemController extends GetxController {
               ))
         ]);
   }
+
+  bool showDetails() {
+    if (titleController.text.isNotEmpty) {
+      return true;
+    }
+    return false;
+  }
 }
