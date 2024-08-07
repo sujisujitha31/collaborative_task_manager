@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart' as c;
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
@@ -47,24 +48,136 @@ class AddItemBodyWidget extends StatelessWidget {
               ),
               FillUpWidget(w: w * .5, controller: controller, h: h),
               const Spacer(),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 20),
-                padding: EdgeInsets.symmetric(horizontal: w * .025),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        bottomLeft: Radius.circular(40))),
-                width: w * .5,
-                child: Column(
-                  children: [],
-                ),
-              ),
+              DetailsBoard(w: w * .4, controller: controller),
               const Spacer(),
             ],
           ),
         ),
       ],
+    );
+  }
+}
+
+class DetailsBoard extends StatelessWidget {
+  const DetailsBoard({
+    super.key,
+    required this.w,
+    required this.controller,
+  });
+
+  final double w;
+  final AddItemController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: w * .05),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(5)
+          //  BorderRadius.only(
+          //     topLeft: Radius.circular(40),
+          //     bottomLeft: Radius.circular(40))
+          ),
+      width: w,
+      child: controller.showDetails()
+          ? Column(
+              children: [
+                u.vFill(30),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: w * .27,
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: RotationTransition(
+                          turns: const AlwaysStoppedAnimation(330 / 360),
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Colors.black)),
+                            child: u.TextWithDmSans(
+                              text:
+                                  u.getFullDate(controller.selectedDate.value),
+                              maxLine: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    SizedBox(
+                      width: w * .35,
+                      child: Center(
+                        child: u.TextWithDmSans(
+                          text: "My board",
+                          color: c.purpleTheme,
+                          fontSize: 18,
+                          weight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    SizedBox(
+                      width: w * .2,
+                    )
+                  ],
+                ),
+                u.vFill(20),
+                u.TextWithDmSans(
+                  text: "i am gonna do ${controller.titleController.text}",
+                  fontSize: 15,
+                  weight: FontWeight.w500,
+                ),
+                u.vFill(20),
+                u.TextWithDmSans(
+                  text: "details",
+                  color: c.purpleTheme,
+                  weight: FontWeight.w500,
+                ),
+                u.vFill(2),
+                u.TextWithDmSans(
+                  text: controller.descriptionController.text,
+                  maxLine: 4,
+                  textalign: TextAlign.center,
+                ),
+                u.vFill(20),
+                u.TextWithDmSans(
+                  text: "i want to share this with",
+                  color: c.purpleTheme,
+                  weight: FontWeight.w500,
+                ),
+                controller.selectedCollabNames.isEmpty
+                    ? const u.TextWithDmSans(
+                        text: "No body",
+                      )
+                    : const SizedBox(),
+                for (int i = 0; i < controller.selectedCollabNames.length; i++)
+                  Row(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 5),
+                        width: 25, height: 20,
+                        // padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.black)),
+                        child: Center(
+                          child: u.TextWithDmSans(
+                            text: (i + 1).toString(),
+                          ),
+                        ),
+                      ),
+                      u.TextWithDmSans(
+                        text: controller.selectedCollabNames[i],
+                      ),
+                    ],
+                  )
+              ],
+            )
+          : const SizedBox(),
     );
   }
 }
@@ -88,10 +201,11 @@ class FillUpWidget extends StatelessWidget {
         height: h * .95,
         margin: EdgeInsets.symmetric(vertical: h * .02),
         padding: EdgeInsets.symmetric(horizontal: w * .0250),
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40), bottomLeft: Radius.circular(40))),
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)
+            //  BorderRadius.only(
+            //     topLeft: Radius.circular(40), bottomLeft: Radius.circular(40))
+            ),
         width: w,
         // height: h,
         child: SingleChildScrollView(

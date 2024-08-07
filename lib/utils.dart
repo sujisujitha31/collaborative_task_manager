@@ -35,6 +35,7 @@ class TextWithDmSans extends StatelessWidget {
       this.fontSize = 12,
       this.overflow = TextOverflow.ellipsis,
       this.decoration,
+      this.textalign,
       this.maxLine});
   final String text;
   final Color? color;
@@ -43,6 +44,7 @@ class TextWithDmSans extends StatelessWidget {
   final TextDecoration? decoration;
   final TextOverflow? overflow;
   final int? maxLine;
+  final TextAlign? textalign;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,7 @@ class TextWithDmSans extends StatelessWidget {
           decoration: decoration),
       overflow: overflow,
       maxLines: maxLine,
+      textAlign: textalign,
     );
   }
 }
