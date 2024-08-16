@@ -54,6 +54,9 @@ class AddItemController extends GetxController {
     for (int i = 0; i < selectedCollabIds.length; i++) {
       storeCollaboratorsTask(todoData, uniqueId, selectedCollabIds[i]);
     }
+    if (selectedCollabIds.isNotEmpty) {
+      sendEmail(selectedCollabIds, todoData.title!, todoData.description!);
+    }
     FirebaseDatabase().storeData(
       g.userMail,
       todoData,
@@ -210,15 +213,16 @@ class AddItemController extends GetxController {
     descriptionController.clear();
   }
 
-  sendEmail() async {
+  sendEmail(List<String> recipients, String title, String body) async {
     try {
       SmtpServer smtpServer =
           gmail("taskcollaborative@gmail.com", "mjaz spug moui fcnf");
       Message message = Message();
       message.from = const Address("taskcollaborative@gmail.com");
       // collab.789
-      message.recipients.add(collabMail);
-      message.text = "this is test message";
+      message.recipients = recipients;
+      message.subject = title;
+      message.text = body;
       SendReport report = await send(message, smtpServer);
 
       clearCollabDetails();
