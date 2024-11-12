@@ -18,7 +18,7 @@ class TabletBaseScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: controller.scaffoldState,
-      drawer: SizedBox(width: width * .35, child: const SideMenu()),
+      drawer: SizedBox(width: width * .35, child: const NavigationMenu()),
       body: Column(
         children: [
           Container(
