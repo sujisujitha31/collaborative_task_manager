@@ -31,7 +31,7 @@ class DesktopBaseScreen extends StatelessWidget {
 
 // this is drawer
   buildDrawer(BuildContext context) {
-    return const SideMenu();
+    return const NavigationMenu();
   }
 
 // this is content area
