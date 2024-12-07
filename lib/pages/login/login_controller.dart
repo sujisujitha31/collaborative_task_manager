@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/firebase/firebase_database.dart';
 import 'package:todo_app/pages/login/desktop_login_view.dart';
 import 'package:todo_app/pages/login/mobile_login_view.dart';
-import 'package:todo_app/pages/menu/menu_controller.dart';
+import 'package:todo_app/pages/menu/navigation_controller.dart';
 import 'package:todo_app/pages/todo_list/todo_list_controller.dart';
 import 'package:todo_app/responsive_base_screen.dart';
 import 'package:todo_app/utils.dart' as u;

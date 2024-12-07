@@ -6,6 +6,7 @@ import 'package:todo_app/globals.dart' as g;
 import 'package:todo_app/responsive.dart';
 import 'mobile_todo_list_view.dart';
 import 'package:todo_app/utils.dart' as u;
+import "package:todo_app/constant.dart" as c;
 
 class DesktopTodoListView extends GetView<TodoListController> {
   const DesktopTodoListView({super.key});
@@ -71,12 +72,13 @@ class Calendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(10),
       // height: double.infinity,
-      height: h * .8,
+      height: h * .7,
       // color: Colors.white,
       decoration: BoxDecoration(
           boxShadow: u.getBoxShadow(),
-          borderRadius: const BorderRadius.only(topLeft: Radius.circular(40))),
+          borderRadius: const BorderRadius.all(Radius.circular(40))),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Column(mainAxisSize: MainAxisSize.max, children: [
         NavigationCalendar(
@@ -204,6 +206,7 @@ class HeaderRow extends StatelessWidget {
                     "Tasks under ${u.getFullDate(controller.selectedDate.value)}",
                 fontSize: 18,
                 weight: FontWeight.w700,
+                color: c.appColor,
               ),
             ),
             const Spacer(),

@@ -8,6 +8,7 @@ import 'package:todo_app/utils.dart';
 import 'components/floating_button.dart';
 import 'components/todo_card.dart';
 import 'package:todo_app/utils.dart' as u;
+import 'package:todo_app/constant.dart' as c;
 
 class MobileTodoListView extends GetView<TodoListController> {
   MobileTodoListView({super.key});
@@ -44,13 +45,8 @@ class NavigationCalendar extends GetView<TodoListController> {
   Widget build(BuildContext context) {
     return GetBuilder<TodoListController>(builder: (cont) {
       return Container(
-        // padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         width: w,
-        decoration: const BoxDecoration(
-            // color: Colors.blue.withOpacity(0.1),
-            // borderRadius: BorderRadius.circular(10),
-            // boxShadow: u.getBoxShadow()
-            ),
+        decoration: const BoxDecoration(),
         child: TableCalendar(
           // daysOfWeekVisible: false,
           calendarFormat: CalendarFormat.month,
@@ -80,7 +76,7 @@ class NavigationCalendar extends GetView<TodoListController> {
               formatButtonVisible: false,
               titleCentered: true,
               titleTextStyle: GoogleFonts.dmSans(
-                  color: const Color(0xff4e4dac), fontWeight: FontWeight.w600)),
+                  color: c.appColor, fontWeight: FontWeight.w600)),
           calendarStyle: const CalendarStyle(
             outsideDaysVisible: false,
           ),
@@ -90,7 +86,7 @@ class NavigationCalendar extends GetView<TodoListController> {
             },
             selectedBuilder: (context, day, focusedDay) => calenderDaysBox(day,
                 dayColor: Colors.white,
-                color: const Color(0xff4e4dac),
+                color: c.appColor,
                 weight: FontWeight.w600),
             todayBuilder: (context, day, focusedDay) => calenderDaysBox(
               day,
@@ -110,7 +106,7 @@ class NavigationCalendar extends GetView<TodoListController> {
   Container getChevIcon(IconData data) {
     return Container(
       decoration:
-          const BoxDecoration(color: Color(0xffb4b4da), shape: BoxShape.circle),
+          BoxDecoration(color: c.selectedNavigation, shape: BoxShape.circle),
       padding: const EdgeInsetsDirectional.all(5),
       child: Icon(
         data,

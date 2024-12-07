@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../pages/menu/menu_view.dart';
+import '../pages/menu/navigation_menu.dart';
 
 class DesktopBaseScreen extends StatelessWidget {
   const DesktopBaseScreen({
@@ -13,11 +13,11 @@ class DesktopBaseScreen extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0xfff5f5fa),
+        backgroundColor: const Color(0xffF5FEFA),
         body: SafeArea(
           child: Row(
             children: [
-              SizedBox(width: w * .17, child: buildDrawer(context)),
+              SizedBox(width: w * .17, height: h, child: buildDrawer(context)),
               SizedBox(
                   height: h,
                   width: w * .83,
