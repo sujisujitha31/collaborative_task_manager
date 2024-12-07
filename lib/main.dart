@@ -6,7 +6,7 @@ import 'package:todo_app/pages/login/login_controller.dart';
 
 import 'firebase_options.dart';
 import 'pages/add_item/add_item_controller.dart';
-import 'pages/menu/menu_controller.dart';
+import 'pages/menu/navigation_controller.dart';
 import 'pages/splash/splash_screen.dart';
 import 'pages/todo_list/todo_list_controller.dart';
 

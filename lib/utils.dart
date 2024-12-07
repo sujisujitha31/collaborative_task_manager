@@ -50,7 +50,7 @@ class TextWithDmSans extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.dmSans(
+      style: GoogleFonts.montserrat(
           color: color,
           fontSize: fontSize,
           fontWeight: weight,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/pages/menu/menu_controller.dart';
+import 'package:todo_app/pages/menu/navigation_controller.dart';
 import 'package:todo_app/utils.dart' as u;
+import 'package:todo_app/constant.dart' as c;
 
 class NavigationMenu extends GetView<SideMenuController> {
   const NavigationMenu({super.key});
@@ -12,9 +13,12 @@ class NavigationMenu extends GetView<SideMenuController> {
       return Container(
           margin: const EdgeInsets.only(bottom: 20),
           decoration: BoxDecoration(
-              color: const Color(0xffCEE9BE).withOpacity(0.2),
-              borderRadius:
-                  const BorderRadius.only(bottomRight: Radius.circular(40))),
+            color: c.navigationContainerBg,
+            // color: const Color(0xffCEE9BE).withOpacity(0.2),
+            border: Border.all(color: c.appColor, width: 0.2),
+            // borderRadius:
+            //     const BorderRadius.only(bottomRight: Radius.circular(40))
+          ),
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: Column(
@@ -42,19 +46,25 @@ class NavigationMenu extends GetView<SideMenuController> {
                                       .toList()[index]
                                       .key ==
                                   controller.selectedPage.value
-                              ? const Color(0xffCEE9BE)
+                              ? c.selectedNavigation
                               : null),
                       child: Row(
                         children: [
                           Icon(controller.icons.entries.toList()[index].value,
-                              color: const Color(0xff626748)),
+                              color: c.appColor),
                           u.hFill(10),
                           u.TextWithDmSans(
                             text: controller.menuTitles.entries
                                 .toList()[index]
                                 .value,
-                            color: Colors.black,
                             fontSize: 15,
+                            color: controller.menuTitles.entries
+                                        .toList()[index]
+                                        .key ==
+                                    controller.selectedPage.value
+                                ? c.appColor
+                                : Colors.black,
+                            weight: FontWeight.w500,
                           ),
                         ],
                       ),

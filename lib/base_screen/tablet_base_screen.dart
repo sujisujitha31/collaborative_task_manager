@@ -4,7 +4,7 @@ import 'package:todo_app/base_screen/base_screen_controller.dart';
 import 'package:todo_app/utils.dart' as u;
 import 'package:todo_app/globals.dart' as g;
 import '../constant.dart';
-import '../pages/menu/menu_view.dart';
+import '../pages/menu/navigation_menu.dart';
 
 class TabletBaseScreen extends StatelessWidget {
   const TabletBaseScreen({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/pages/menu/menu_controller.dart';
+import 'package:todo_app/pages/menu/navigation_controller.dart';
 import 'package:todo_app/responsive.dart';
 
 import 'base_screen/desktop_base_screen.dart';
