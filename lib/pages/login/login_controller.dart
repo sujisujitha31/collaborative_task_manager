@@ -51,7 +51,8 @@ class LoginController extends GetxController {
             .signInWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text)
             .then((user) {
-          Get.find<SideMenuController>().selectedPage.value = "task";
+          Get.find<SideMenuController>().selectedPage.value =
+              c.Constants.kMainMenuTask;
         });
       } on FirebaseAuthException catch (e) {
         u.closeLoading();
@@ -89,49 +90,30 @@ class LoginController extends GetxController {
     FirebaseAuth.instance.signOut();
   }
 
-  createNewUser() async {
-    validateEmailAndPassword();
-    try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      )
-          .then((user) {
-        // if (user == null) {
-        //   Get.offAll(() => TodoListView());
-        // } else {}
-        print(user);
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  checkUserLoggedInOrNot() {
-    validateEmailAndPassword();
-    FirebaseAuth.instance.authStateChanges().listen((user) {
-      if (user == null) {
-        Get.offAll(() => const Responsive(
-            desktopScaffold: DesktopLoginView(),
-            tabletScaffold: SizedBox(),
-            mobileScaffold: LoginView()));
-      } else {
-        g.userMail = user.email!;
-        getCollabarators();
-        final todoController = Get.find<TodoListController>();
-        todoController.searchByToday();
-        todoController.getTodos();
-        Get.offAll(() => const ResponsiveBaseScreen());
-      }
-    });
-  }
+  // createNewUser() async {
+  //   validateEmailAndPassword();
+  //   try {
+  //     final credential = await FirebaseAuth.instance
+  //         .createUserWithEmailAndPassword(
+  //       email: emailController.text,
+  //       password: passwordController.text,
+  //     )
+  //         .then((user) {
+  //       // if (user == null) {
+  //       //   Get.offAll(() => TodoListView());
+  //       // } else {}
+  //       print(user);
+  //     });
+  //   } on FirebaseAuthException catch (e) {
+  //     if (e.code == 'weak-password') {
+  //       print('The password provided is too weak.');
+  //     } else if (e.code == 'email-already-in-use') {
+  //       print('The account already exists for that email.');
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   clearCredentials() {
     emailController.text = "";
@@ -141,7 +123,7 @@ class LoginController extends GetxController {
   getCollabarators() {
     FirebaseDatabase().getAllCollaborators(
       onSuccess: (data) {
-        g.collabUsers = data.get(c.Constants.kListOfCollab);
+        g.storeCollaborators(data.get(c.Constants.kListOfCollab));
       },
       onError: (err) {
         // print("get error ${err}");
