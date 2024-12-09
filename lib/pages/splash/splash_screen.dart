@@ -3,9 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/pages/login/login_controller.dart';
+import 'package:todo_app/pages/splash/splash_controller.dart';
 import 'package:todo_app/utils.dart' as u;
 
-class SplashView extends StatelessWidget {
+class SplashView extends GetView<SplashController> {
   const SplashView({super.key});
 
   @override
@@ -13,7 +14,7 @@ class SplashView extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
     Future.delayed(const Duration(seconds: 3), () async {
-      Get.find<LoginController>().checkUserLoggedInOrNot();
+      controller.checkUserLoggedInOrNot();
     });
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;

@@ -18,4 +18,8 @@ class Constants {
   static const String kTodoStatusDone = "done";
   static const String kTodoStatusUndone = "undone";
   static const String kListOfCollab = "list_of_collab";
+  static const String kMainMenuTask = "task";
+  static const String kMainMenuAddTask = "add-task";
+  static const String kMainMenuProfile = "profile";
+  static const String kMainMenuLogout = "logout";
 }

@@ -10,18 +10,19 @@ import 'package:todo_app/utils.dart';
 import '../add_item/desktop_add_item.dart';
 import '../add_item/tablet_add_item.dart';
 import '../todo_list/desktop_todo_list_view.dart';
+import 'package:todo_app/constant.dart' as c;
 
 class SideMenuController extends GetxController {
-  var selectedPage = "task".obs;
+  var selectedPage = c.Constants.kMainMenuTask.obs;
   var previoulySelectedPage = "".obs;
   goToPage(String index, {BuildContext? context}) {
     previoulySelectedPage.value = selectedPage.value;
     selectedPage.value = index;
-    if (selectedPage.value == "logout") {
+    if (selectedPage.value == c.Constants.kMainMenuLogout) {
       showLogoutPopup(() {
         selectedPage.value = previoulySelectedPage.value;
       });
-    } else if (selectedPage.value == "create-task") {
+    } else if (selectedPage.value == c.Constants.kMainMenuAddTask) {
       Get.find<AddItemController>().makeAllUnSelected();
     }
 
@@ -29,34 +30,34 @@ class SideMenuController extends GetxController {
   }
 
   Map<String, String> menuTitles = {
-    "task": "Tasks",
-    "create-task": "Add task",
-    "profile": "Profile",
-    "logout": "Logout"
+    c.Constants.kMainMenuTask: "Tasks",
+    c.Constants.kMainMenuAddTask: "Add task",
+    c.Constants.kMainMenuProfile: "Profil",
+    c.Constants.kMainMenuLogout: "Logout"
   };
   Map<String, IconData> icons = {
-    "task": Icons.task,
-    "create-task": Icons.add_circle_rounded,
-    "profile": Icons.person,
-    "logout": Icons.logout
+    c.Constants.kMainMenuTask: Icons.task,
+    c.Constants.kMainMenuAddTask: Icons.add_circle_rounded,
+    c.Constants.kMainMenuProfile: Icons.person,
+    c.Constants.kMainMenuLogout: Icons.logout
   };
   Map desktopPages = {
-    "task": const DesktopTodoListView(),
-    "create-task": const DesktopAddITemView(),
-    "profile": const SizedBox(),
-    "logout": const SizedBox()
+    c.Constants.kMainMenuTask: const DesktopTodoListView(),
+    c.Constants.kMainMenuAddTask: const DesktopAddITemView(),
+    c.Constants.kMainMenuProfile: const SizedBox(),
+    c.Constants.kMainMenuLogout: const SizedBox()
   };
   Map tabletPages = {
-    "task": const TabletTodoListView(),
-    "create-task": const TabletAddITemView(),
-    "profile": const SizedBox(),
-    "logout": const SizedBox()
+    c.Constants.kMainMenuTask: const TabletTodoListView(),
+    c.Constants.kMainMenuAddTask: const TabletAddITemView(),
+    c.Constants.kMainMenuProfile: const SizedBox(),
+    c.Constants.kMainMenuLogout: const SizedBox()
   };
   Map mobilePages = {
-    "task": MobileTodoListView(),
-    "create-task": const SizedBox(),
-    "profile": const SizedBox(),
-    "logout": const SizedBox()
+    c.Constants.kMainMenuTask: MobileTodoListView(),
+    c.Constants.kMainMenuAddTask: const SizedBox(),
+    c.Constants.kMainMenuProfile: const SizedBox(),
+    c.Constants.kMainMenuLogout: const SizedBox()
   };
 }
 
