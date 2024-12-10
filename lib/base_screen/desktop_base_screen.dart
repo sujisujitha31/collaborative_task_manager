@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/components/body_container.dart';
 import '../pages/menu/navigation_menu.dart';
 
 class DesktopBaseScreen extends StatelessWidget {
@@ -14,18 +15,15 @@ class DesktopBaseScreen extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xffF5FEFA),
-        body: SafeArea(
-          child: Row(
-            children: [
-              SizedBox(width: w * .17, height: h, child: buildDrawer(context)),
-              SizedBox(
-                  height: h,
-                  width: w * .83,
-                  child: Column(
-                    children: [buildBodyContent(context)],
-                  ))
-            ],
-          ),
+        body: Row(
+          children: [
+            SizedBox(width: w * .17, height: h, child: buildDrawer(context)),
+            SizedBox(
+                height: h,
+                width: w * .83,
+                child:
+                    BodyContainer(width: w, child: buildBodyContent(context)))
+          ],
         ));
   }
 

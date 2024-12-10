@@ -11,13 +11,10 @@ class NavigationMenu extends GetView<SideMenuController> {
   Widget build(BuildContext context) {
     return GetBuilder<SideMenuController>(builder: (cont) {
       return Container(
-          margin: const EdgeInsets.only(bottom: 20),
+          // margin: const EdgeInsets.only(bottom: 20),
           decoration: BoxDecoration(
             color: c.navigationContainerBg,
-            // color: const Color(0xffCEE9BE).withOpacity(0.2),
             border: Border.all(color: c.appColor, width: 0.2),
-            // borderRadius:
-            //     const BorderRadius.only(bottomRight: Radius.circular(40))
           ),
           height: MediaQuery.of(context).size.height,
           width: double.infinity,

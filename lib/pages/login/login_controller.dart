@@ -41,29 +41,28 @@ class LoginController extends GetxController {
 
   onLogin() {
     u.showLoading("Please wait...");
-    Future.delayed(const Duration(seconds: 1, milliseconds: 500), () {
-      if (validateEmailAndPassword()) {
-        return;
-      }
+    if (validateEmailAndPassword()) {
+      return;
+    }
 
-      try {
-        FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-                email: emailController.text, password: passwordController.text)
-            .then((user) {
-          Get.find<SideMenuController>().selectedPage.value =
-              c.Constants.kMainMenuTask;
-        });
-      } on FirebaseAuthException catch (e) {
-        u.closeLoading();
-        invalidLoginPopup();
-        print(e);
-      } catch (e) {
-        u.closeLoading();
-        invalidLoginPopup();
-        print(e);
-      }
-    });
+    try {
+      FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text)
+          .then((user) {
+        Get.find<SideMenuController>().selectedPage.value =
+            c.Constants.kMainMenuTask;
+      });
+    } on FirebaseAuthException catch (e) {
+      u.closeLoading();
+      invalidLoginPopup();
+      print(e);
+    } catch (e) {
+      u.closeLoading();
+      invalidLoginPopup();
+      print(e);
+    }
+    // });
   }
 
   Future<dynamic> invalidLoginPopup() {

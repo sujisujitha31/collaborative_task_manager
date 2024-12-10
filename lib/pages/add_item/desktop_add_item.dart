@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/components/body_title.dart';
 import 'package:todo_app/constant.dart' as c;
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
 import 'package:todo_app/pages/add_item/widgets/collaboration_widget.dart';
@@ -40,8 +41,9 @@ class AddItemBodyWidget extends StatelessWidget {
       children: [
         // u.vFill(20),
         SizedBox(
-          width: w,
-          child: Row(
+            width: w,
+            child: FillUpWidget(w: w * .5, controller: controller, h: h)
+            /* Row(
             children: [
               const Spacer(
                 flex: 1,
@@ -51,8 +53,8 @@ class AddItemBodyWidget extends StatelessWidget {
               DetailsBoard(w: w * .4, controller: controller),
               const Spacer(),
             ],
-          ),
-        ),
+          ),*/
+            ),
       ],
     );
   }
@@ -213,20 +215,22 @@ class FillUpWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                height: 70,
-                child: Row(
-                  children: [
-                    u.hFill(w * .02),
-                    u.TextWithDmSans(
-                      text: "Create New Task",
-                      fontSize: 18,
-                      weight: FontWeight.w500,
-                      color: c.purpleTheme,
-                    ),
-                  ],
-                ),
-              ),
+              // SizedBox(
+              //   height: 70,
+              //   child: Row(
+              //     children: [
+              //       u.hFill(w * .02),
+              //       u.TextWithDmSans(
+              //         text: "Create New Task",
+              //         fontSize: 18,
+              //         weight: FontWeight.w500,
+              //         color: c.purpleTheme,
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              BodyTitle(title: "Add task"),
+              u.vFill(20),
               getSizedBox(w * .95, "Title", TitleField(controller: controller)),
               u.vFill(10),
               getSizedBox(

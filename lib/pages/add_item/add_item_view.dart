@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/components/body_title.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
 import 'package:todo_app/utils.dart' as u;
@@ -25,14 +26,15 @@ class AddItemScreen extends GetView<AddItemController> {
               // mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Center(
-                  child: u.TextWithDmSans(
-                    text: "Add",
-                    color: Colors.black,
-                    fontSize: 35,
-                    weight: FontWeight.w700,
-                  ),
-                ),
+                BodyTitle(title: ""),
+                // const Center(
+                //   child: u.TextWithDmSans(
+                //     text: "Add",
+                //     color: Colors.black,
+                //     fontSize: 35,
+                //     weight: FontWeight.w700,
+                //   ),
+                // ),
                 u.vFill(h * .01),
                 Center(
                   child: Container(

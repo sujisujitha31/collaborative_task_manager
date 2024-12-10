@@ -199,3 +199,38 @@ List<BoxShadow> getBoxShadow() {
     ),
   ];
 }
+
+List<BoxShadow> getBoxShadowOfTitle() {
+  return [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.05),
+      spreadRadius: 0,
+      blurRadius: 3.82,
+      offset: Offset(0, 2.43),
+    ),
+  ];
+}
+
+class MandatoryText extends StatelessWidget {
+  const MandatoryText({super.key, required this.text});
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Text.rich(TextSpan(children: [
+      TextSpan(
+          text: text,
+          style: GoogleFonts.poppins(
+            fontSize: 12,
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          )),
+      TextSpan(
+          text: "*",
+          style: GoogleFonts.poppins(
+            fontSize: 12,
+            color: const Color(0xffEF4444),
+            fontWeight: FontWeight.w400,
+          ))
+    ]));
+  }
+}
