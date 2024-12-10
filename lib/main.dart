@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/base_screen/base_screen_controller.dart';
 import 'package:todo_app/pages/login/login_controller.dart';
+import 'package:todo_app/pages/splash/splash_controller.dart';
 
 import 'firebase_options.dart';
 import 'pages/add_item/add_item_controller.dart';
@@ -15,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Get.put(SplashController());
   Get.put(BaseScreenController());
   Get.put(SideMenuController());
   Get.put(AddItemController());

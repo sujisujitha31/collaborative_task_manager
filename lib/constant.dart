@@ -13,6 +13,7 @@ Color appColor = const Color(0xff06AC5F);
 Color navigationContainerBg = const Color(0xffE7F9F0);
 Color scaffoldBg = const Color(0xffF5FEFA);
 Color selectedNavigation = const Color(0xffD0EFD9);
+Color listDividerColor = const Color(0xffE2E8F0);
 
 class Constants {
   static const String kTodoStatusDone = "done";
