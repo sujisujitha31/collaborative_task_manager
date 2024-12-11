@@ -26,7 +26,7 @@ showTaskDetails(double w, TodoListController controller, int index) {
                   child: Center(
                     child: Row(children: [
                       const Spacer(),
-                      u.TextWithDmSans(
+                      u.PoppinsText(
                         text: controller.todoList[index].title ?? "--",
                         fontSize: 15,
                         weight: FontWeight.w500,
@@ -47,16 +47,16 @@ showTaskDetails(double w, TodoListController controller, int index) {
                   decoration: const BoxDecoration(color: Colors.white),
                   child: Column(
                     children: [
-                      u.TextWithDmSans(
+                      u.PoppinsText(
                           text:
                               controller.todoList[index].description ?? "-..."),
                       u.vFill(10),
                       Row(
                         children: [
-                          const u.TextWithDmSans(
+                          const u.PoppinsText(
                             text: "Date:   ",
                           ),
-                          u.TextWithDmSans(
+                          u.PoppinsText(
                             text: u.getFullDate(DateTime.now()),
                             weight: FontWeight.w500,
                           )
@@ -65,10 +65,10 @@ showTaskDetails(double w, TodoListController controller, int index) {
                       u.vFill(10),
                       Row(
                         children: [
-                          const u.TextWithDmSans(
+                          const u.PoppinsText(
                             text: "Time:   ",
                           ),
-                          u.TextWithDmSans(
+                          u.PoppinsText(
                             text: u.getFullDate(DateTime.now()),
                             weight: FontWeight.w500,
                           )

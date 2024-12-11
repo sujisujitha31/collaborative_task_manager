@@ -82,7 +82,7 @@ class LoginBody extends StatelessWidget {
       return Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const u.TextWithDmSans(
+          const u.PoppinsText(
             text: "Login",
             fontSize: 25,
             weight: FontWeight.w700,
@@ -147,7 +147,7 @@ class LoginBody extends StatelessWidget {
                       ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
                   padding: EdgeInsets.symmetric(vertical: height * .02),
                   child: const Center(
-                    child: u.TextWithDmSans(
+                    child: u.PoppinsText(
                       text: "Login",
                       color: Colors.white,
                       weight: FontWeight.w500,
@@ -179,18 +179,18 @@ class SignUpWidgets extends StatelessWidget {
       // crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        const u.TextWithDmSans(
+        const u.PoppinsText(
           text: "Continue with",
         ),
         u.vFill(10),
         OAuthRow(width: width),
         u.vFill(height * .07),
-        const u.TextWithDmSans(
+        const u.PoppinsText(
           text: "Don't have an account?",
         ),
         u.vFill(10),
         InkWell(
-          child: u.TextWithDmSans(
+          child: u.PoppinsText(
             text: "Create account",
             weight: FontWeight.w600,
             color: violet,
@@ -230,7 +230,7 @@ class OAuthRow extends StatelessWidget {
                   width: 30,
                 ),
                 u.hFill(10),
-                const u.TextWithDmSans(
+                const u.PoppinsText(
                   text: "google",
                   color: Colors.black,
                 )
@@ -254,7 +254,7 @@ class OAuthRow extends StatelessWidget {
                   width: 30,
                 ),
                 u.hFill(10),
-                const u.TextWithDmSans(
+                const u.PoppinsText(
                   text: "github",
                   color: Colors.black,
                 )

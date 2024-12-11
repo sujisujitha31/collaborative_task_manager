@@ -63,7 +63,7 @@ class TodoList extends StatelessWidget {
         ? SizedBox(
             height: h * .8,
             child: const Center(
-                child: u.TextWithDmSans(
+                child: u.PoppinsText(
               text: "There are no Todos here",
               fontSize: 17,
               weight: FontWeight.w500,
@@ -108,7 +108,7 @@ class TodoList extends StatelessWidget {
                     SizedBox(
                       // color: Colors.amber,
                       width: w * .5,
-                      child: u.TextWithDmSans(
+                      child: u.PoppinsText(
                         text: controller.todoList[index].title ?? "--",
                         fontSize: 17,
                         weight: FontWeight.w500,

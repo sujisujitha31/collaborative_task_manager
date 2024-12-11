@@ -20,13 +20,13 @@ class TimeAndCalendarHeader extends GetView<TodoListController> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            u.TextWithDmSans(
+            u.PoppinsText(
               text: "${u.getMonthName(today)} ${today.year}",
               color: Colors.white,
               fontSize: 16,
               weight: FontWeight.w600,
             ),
-            u.TextWithDmSans(
+            u.PoppinsText(
                 text: "${today.day} ${u.getWeekDay(today)}",
                 // color: darkGreen,
                 color: Colors.white,
@@ -41,7 +41,7 @@ class TimeAndCalendarHeader extends GetView<TodoListController> {
           },
           child: Row(
             children: [
-              const u.TextWithDmSans(
+              const u.PoppinsText(
                 text: "Calendar",
                 fontSize: 18,
                 color: Colors.white,

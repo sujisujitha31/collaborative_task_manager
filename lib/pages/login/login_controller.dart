@@ -69,7 +69,7 @@ class LoginController extends GetxController {
     return Get.defaultDialog(
         title: "oops!",
         titleStyle: GoogleFonts.dmSans(fontSize: 12),
-        content: const u.TextWithDmSans(
+        content: const u.PoppinsText(
             text: "Provided email/password is invalid.could you check it out."),
         actions: [
           ElevatedButton(
@@ -77,7 +77,7 @@ class LoginController extends GetxController {
               onPressed: () {
                 Get.back();
               },
-              child: const u.TextWithDmSans(
+              child: const u.PoppinsText(
                 text: "Okay",
                 color: Colors.white,
               ))

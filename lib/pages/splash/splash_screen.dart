@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant.dart';
-import 'package:todo_app/pages/login/login_controller.dart';
 import 'package:todo_app/pages/splash/splash_controller.dart';
 import 'package:todo_app/utils.dart' as u;
 
@@ -13,7 +12,7 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
-    Future.delayed(const Duration(seconds: 3), () async {
+    Future.delayed(const Duration(seconds: 1), () async {
       controller.checkUserLoggedInOrNot();
     });
     double width = MediaQuery.of(context).size.width;
@@ -36,7 +35,7 @@ class SplashView extends GetView<SplashController> {
                   width: width * .5,
                   child: const Align(
                     alignment: Alignment.centerRight,
-                    child: u.TextWithDmSans(
+                    child: u.PoppinsText(
                       text: "MY",
                       fontSize: 50,
                       weight: FontWeight.w800,
@@ -53,7 +52,7 @@ class SplashView extends GetView<SplashController> {
                   width: width * .53,
                   child: const Align(
                     alignment: Alignment.centerLeft,
-                    child: u.TextWithDmSans(
+                    child: u.PoppinsText(
                         text: "TODO",
                         fontSize: 50,
                         weight: FontWeight.w800,

@@ -18,7 +18,7 @@ showSuccessPopup() {
           width: w * .7,
           child: Column(
             children: [
-              const u.TextWithDmSans(
+              const u.PoppinsText(
                 text: "Added",
                 weight: FontWeight.w500,
                 fontSize: 22,
@@ -30,10 +30,10 @@ showSuccessPopup() {
                 size: 70,
               ),
               u.vFill(20),
-              const u.TextWithDmSans(
+              const u.PoppinsText(
                 text: "Congratulations!",
               ),
-              const u.TextWithDmSans(
+              const u.PoppinsText(
                 text: "Your task has been successfully added.",
               ),
               u.vFill(20),
@@ -46,7 +46,7 @@ showSuccessPopup() {
                       Get.back();
                       Get.back();
                     },
-                    child: const u.TextWithDmSans(
+                    child: const u.PoppinsText(
                       text: "Okay",
                       color: Colors.white,
                       weight: FontWeight.w500,

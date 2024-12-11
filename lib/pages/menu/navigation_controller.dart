@@ -42,7 +42,7 @@ class SideMenuController extends GetxController {
     c.Constants.kMainMenuLogout: Icons.logout
   };
   Map desktopPages = {
-    c.Constants.kMainMenuTask: const DesktopTodoListView(),
+    c.Constants.kMainMenuTask: const DesktopTaskListView(),
     c.Constants.kMainMenuAddTask: const DesktopAddITemView(),
     c.Constants.kMainMenuProfile: const SizedBox(),
     c.Constants.kMainMenuLogout: const SizedBox()
@@ -70,7 +70,7 @@ showLogoutPopup(Function() getBack) {
           vertical: 10,
           horizontal: 10,
         ),
-        child: TextWithDmSans(text: "Are you sure want to logout?"),
+        child: PoppinsText(text: "Are you sure want to logout?"),
       ),
       actions: [
         OutlinedButton(
@@ -84,7 +84,7 @@ showLogoutPopup(Function() getBack) {
               Get.back();
               getBack();
             },
-            child: TextWithDmSans(
+            child: PoppinsText(
               text: "Cancel",
               weight: FontWeight.w700,
               color: violet,
@@ -94,7 +94,7 @@ showLogoutPopup(Function() getBack) {
             onPressed: () {
               Get.find<LoginController>().onLogout();
             },
-            child: const TextWithDmSans(
+            child: const PoppinsText(
               text: "Sure",
               weight: FontWeight.w700,
               color: Colors.white,

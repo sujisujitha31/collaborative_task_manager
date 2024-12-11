@@ -82,7 +82,7 @@ class TodoListController extends GetxController {
     return Get.defaultDialog(
         // backgroundColor: ,
         title: "Confirmation",
-        content: u.TextWithDmSans(
+        content: u.PoppinsText(
           text: "Are you sure to mark this ${todo.status! ? "Done" : "Undone"}",
         ),
         actions: [
@@ -91,14 +91,14 @@ class TodoListController extends GetxController {
               onPressed: () {
                 Get.back();
               },
-              child: u.TextWithDmSans(text: "No", color: violet)),
+              child: u.PoppinsText(text: "No", color: violet)),
           u.hFill(20),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: violet),
               onPressed: () {
                 makeDone(isDone, todo);
               },
-              child: const u.TextWithDmSans(
+              child: const u.PoppinsText(
                 text: "Yes",
               ))
         ]);

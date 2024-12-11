@@ -8,8 +8,8 @@ import 'mobile_todo_list_view.dart';
 import 'package:todo_app/utils.dart' as u;
 import "package:todo_app/constant.dart" as c;
 
-class DesktopTodoListView extends GetView<TodoListController> {
-  const DesktopTodoListView({super.key});
+class DesktopTaskListView extends GetView<TodoListController> {
+  const DesktopTaskListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +120,7 @@ class TaskList extends StatelessWidget {
             } else if (!cont.isGettingTodos.value && cont.todoList.isEmpty) {
               return SizedBox(
                 height: h * .5,
-                child: const u.TextWithDmSans(text: "There is no todo "),
+                child: const u.PoppinsText(text: "There is no todo "),
               );
             } else {
               return GridView.builder(
@@ -145,7 +145,7 @@ class TaskList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         u.vFill(5),
-                        u.TextWithDmSans(
+                        u.PoppinsText(
                           text:
                               "${u.getTimeWithAmPmFormat(DateTime.parse(cont.todoList[index].dateTime!))} TO ${u.getTimeWithAmPmFormat(DateTime.parse(cont.todoList[index].dateTime!))}",
                         ),
@@ -154,13 +154,13 @@ class TaskList extends StatelessWidget {
                           color: violet,
                         ),
                         u.vFill(5),
-                        u.TextWithDmSans(
+                        u.PoppinsText(
                           text: controller.todoList[index].title!,
                           maxLine: 1,
                           weight: FontWeight.w700,
                         ),
                         u.vFill(5),
-                        u.TextWithDmSans(
+                        u.PoppinsText(
                           text: cont.todoList[index].description!,
                           maxLine: 1,
                           color: Colors.grey,
@@ -201,7 +201,7 @@ class HeaderRow extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: u.TextWithDmSans(
+              child: u.PoppinsText(
                 text:
                     "Tasks under ${u.getFullDate(controller.selectedDate.value)}",
                 fontSize: 18,
@@ -215,7 +215,7 @@ class HeaderRow extends StatelessWidget {
                 maxRadius: 25,
                 minRadius: 25,
                 backgroundColor: orangeTheme,
-                child: u.TextWithDmSans(
+                child: u.PoppinsText(
                   text: g.userMail[0],
                   weight: FontWeight.w500,
                   color: Colors.white,
