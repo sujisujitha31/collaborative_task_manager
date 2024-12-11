@@ -18,7 +18,7 @@ class BodyTitle extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            u.TextWithDmSans(
+            u.PoppinsText(
               text: title,
               fontSize: 18,
               weight: FontWeight.w600,

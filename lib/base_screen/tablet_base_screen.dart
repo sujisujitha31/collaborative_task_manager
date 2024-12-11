@@ -35,7 +35,7 @@ class TabletBaseScreen extends StatelessWidget {
                     },
                     child: const Icon(Icons.menu)),
                 u.hFill(20),
-                const u.TextWithDmSans(
+                const u.PoppinsText(
                   text: "Title",
                   fontSize: 18,
                   weight: FontWeight.w700,
@@ -45,7 +45,7 @@ class TabletBaseScreen extends StatelessWidget {
                   maxRadius: 25,
                   minRadius: 25,
                   backgroundColor: orangeTheme,
-                  child: u.TextWithDmSans(
+                  child: u.PoppinsText(
                     text: g.userMail[0],
                     weight: FontWeight.w500,
                     color: Colors.white,

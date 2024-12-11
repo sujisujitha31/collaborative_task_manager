@@ -13,14 +13,15 @@ class NavigationMenu extends GetView<SideMenuController> {
       return Container(
           // margin: const EdgeInsets.only(bottom: 20),
           decoration: BoxDecoration(
-            color: c.navigationContainerBg,
-            border: Border.all(color: c.appColor, width: 0.2),
-          ),
-          height: MediaQuery.of(context).size.height,
+              color: c.navigationContainerBg,
+              border: Border(
+                  right: BorderSide(
+                      color: c.appColor.withOpacity(0.5), width: 0.2))),
+          height: MediaQuery.of(context).size.height * .9,
           width: double.infinity,
           child: Column(
             children: [
-              u.vFill(20),
+              // u.vFill(20),
               ListView.separated(
                 separatorBuilder: (context, index) {
                   return const SizedBox();
@@ -50,7 +51,7 @@ class NavigationMenu extends GetView<SideMenuController> {
                           Icon(controller.icons.entries.toList()[index].value,
                               color: c.appColor),
                           u.hFill(10),
-                          u.TextWithDmSans(
+                          u.PoppinsText(
                             text: controller.menuTitles.entries
                                 .toList()[index]
                                 .value,

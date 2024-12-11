@@ -26,8 +26,8 @@ String getTimeWithAmPmFormat(DateTime date) {
   return DateFormat.Hm().format(date).toString();
 }
 
-class TextWithDmSans extends StatelessWidget {
-  const TextWithDmSans(
+class PoppinsText extends StatelessWidget {
+  const PoppinsText(
       {super.key,
       required this.text,
       this.color,
@@ -51,6 +51,42 @@ class TextWithDmSans extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.montserrat(
+          color: color,
+          fontSize: fontSize,
+          fontWeight: weight,
+          decoration: decoration),
+      overflow: overflow,
+      maxLines: maxLine,
+      textAlign: textalign,
+    );
+  }
+}
+
+class InterText extends StatelessWidget {
+  const InterText(
+      {super.key,
+      required this.text,
+      this.color,
+      this.weight,
+      this.fontSize = 12,
+      this.overflow = TextOverflow.ellipsis,
+      this.decoration,
+      this.textalign,
+      this.maxLine});
+  final String text;
+  final Color? color;
+  final FontWeight? weight;
+  final double? fontSize;
+  final TextDecoration? decoration;
+  final TextOverflow? overflow;
+  final int? maxLine;
+  final TextAlign? textalign;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.inter(
           color: color,
           fontSize: fontSize,
           fontWeight: weight,
@@ -154,7 +190,7 @@ showWarning(String title, String msg) {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: TextWithDmSans(
+                    child: PoppinsText(
                       text: msg,
                       color: const Color(0xFF2F80EC),
                       maxLine: 3,

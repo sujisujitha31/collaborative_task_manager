@@ -21,20 +21,20 @@ class ShareTaskListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AddItemController>(
-        builder: (cont) => controller.selectedCollabBool
-                .any((element) => element == true)
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  getHeading("This task also visible for"),
-                  for (String element in controller.selectedCollabIds)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [u.TextWithDmSans(text: element), u.vFill(20)],
-                    ),
-                ],
-              )
-            : const SizedBox());
+        builder: (cont) =>
+            controller.selectedCollabBool.any((element) => element == true)
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      getHeading("This task also visible for"),
+                      for (String element in controller.selectedCollabIds)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [u.PoppinsText(text: element), u.vFill(20)],
+                        ),
+                    ],
+                  )
+                : const SizedBox());
   }
 }
 
@@ -55,8 +55,7 @@ class CollaborationWidget extends StatelessWidget {
         SizedBox(
           width: w * .7,
           child: g.collabUsers.isEmpty
-              ? const u.TextWithDmSans(
-                  text: "There is no collaboraters added yet")
+              ? const u.PoppinsText(text: "There is no collaboraters added yet")
               : TextFormField(
                   readOnly: true,
                   onTap: () {

@@ -89,7 +89,7 @@ class AddItemScreen extends GetView<AddItemController> {
                         onPressed: () {
                           controller.createTask();
                         },
-                        child: const u.TextWithDmSans(
+                        child: const u.PoppinsText(
                           text: "Save",
                           fontSize: 17,
                           weight: FontWeight.w500,
@@ -110,7 +110,7 @@ getHeading(String str) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      u.TextWithDmSans(
+      u.PoppinsText(
         text: str,
         fontSize: 12,
         weight: FontWeight.w500,
@@ -133,7 +133,7 @@ getDays(h, w) {
       width: w * .2,
       height: h * .08,
       child: Center(
-          child: u.TextWithDmSans(
+          child: u.PoppinsText(
         text: i.toString(),
         fontSize: 20,
         weight: FontWeight.w500,
@@ -150,8 +150,8 @@ getMonths(h, w) {
         height: h * .08,
         width: w * .5,
         child: Center(
-            child: u.TextWithDmSans(
-                text: u.getMonthName(DateTime(2023, i, 12))))));
+            child:
+                u.PoppinsText(text: u.getMonthName(DateTime(2023, i, 12))))));
   }
   return months;
 }
@@ -163,7 +163,7 @@ getYears(h, w) {
         height: h * .08,
         width: w * .5,
         child: Center(
-            child: u.TextWithDmSans(
+            child: u.PoppinsText(
           text: i.toString(),
         ))));
   }

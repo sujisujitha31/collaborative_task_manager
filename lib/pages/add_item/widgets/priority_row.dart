@@ -17,7 +17,7 @@ class PriorityRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const u.TextWithDmSans(
+        const u.PoppinsText(
           text: "Show it on the top of Todo list",
           fontSize: 12,
           color: Colors.black45,

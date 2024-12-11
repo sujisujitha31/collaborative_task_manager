@@ -131,7 +131,7 @@ calenderDaysBox(DateTime day,
     height: 35,
     width: 35,
     child: Center(
-        child: u.TextWithDmSans(
+        child: u.PoppinsText(
       text: day.day.toString(),
       color: dayColor,
       weight: weight,
@@ -166,7 +166,7 @@ class SideButton extends StatelessWidget {
       child: Center(
         child: RotatedBox(
           quarterTurns: 3,
-          child: TextWithDmSans(
+          child: PoppinsText(
             text: text,
             color: textColor,
             weight: FontWeight.w500,

@@ -99,7 +99,7 @@ class DetailsBoard extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(color: Colors.black)),
-                            child: u.TextWithDmSans(
+                            child: u.PoppinsText(
                               text:
                                   u.getFullDate(controller.selectedDate.value),
                               maxLine: 2,
@@ -112,7 +112,7 @@ class DetailsBoard extends StatelessWidget {
                     SizedBox(
                       width: w * .35,
                       child: Center(
-                        child: u.TextWithDmSans(
+                        child: u.PoppinsText(
                           text: "My board",
                           color: c.purpleTheme,
                           fontSize: 18,
@@ -127,31 +127,31 @@ class DetailsBoard extends StatelessWidget {
                   ],
                 ),
                 u.vFill(20),
-                u.TextWithDmSans(
+                u.PoppinsText(
                   text: "i am gonna do ${controller.titleController.text}",
                   fontSize: 15,
                   weight: FontWeight.w500,
                 ),
                 u.vFill(20),
-                u.TextWithDmSans(
+                u.PoppinsText(
                   text: "details",
                   color: c.purpleTheme,
                   weight: FontWeight.w500,
                 ),
                 u.vFill(2),
-                u.TextWithDmSans(
+                u.PoppinsText(
                   text: controller.descriptionController.text,
                   maxLine: 4,
                   textalign: TextAlign.center,
                 ),
                 u.vFill(20),
-                u.TextWithDmSans(
+                u.PoppinsText(
                   text: "i want to share this with",
                   color: c.purpleTheme,
                   weight: FontWeight.w500,
                 ),
                 controller.selectedCollabNames.isEmpty
-                    ? const u.TextWithDmSans(
+                    ? const u.PoppinsText(
                         text: "No body",
                       )
                     : const SizedBox(),
@@ -167,12 +167,12 @@ class DetailsBoard extends StatelessWidget {
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.black)),
                         child: Center(
-                          child: u.TextWithDmSans(
+                          child: u.PoppinsText(
                             text: (i + 1).toString(),
                           ),
                         ),
                       ),
-                      u.TextWithDmSans(
+                      u.PoppinsText(
                         text: controller.selectedCollabNames[i],
                       ),
                     ],
@@ -251,7 +251,7 @@ class FillUpWidget extends StatelessWidget {
               ),
               u.vFill(10),
               if (controller.selectedCollabNames.isNotEmpty)
-                const u.TextWithDmSans(
+                const u.PoppinsText(
                   text: "The task is also visible for:",
                 ),
               if (controller.selectedCollabNames.isNotEmpty) u.vFill(10),
@@ -268,13 +268,13 @@ class FillUpWidget extends StatelessWidget {
                         children: [
                           CircleAvatar(
                               maxRadius: 20,
-                              child: u.TextWithDmSans(
+                              child: u.PoppinsText(
                                 text: controller.selectedCollabNames[i][0]
                                     .toUpperCase(),
                                 weight: FontWeight.w500,
                               )),
                           u.hFill(10),
-                          u.TextWithDmSans(
+                          u.PoppinsText(
                             text: controller.selectedCollabNames[i],
                             maxLine: 3,
                           ),
@@ -316,7 +316,7 @@ class FillUpWidget extends StatelessWidget {
                         onPressed: () {
                           controller.createTask();
                         },
-                        child: const u.TextWithDmSans(
+                        child: const u.PoppinsText(
                           text: "Create",
                           color: Colors.white,
                           fontSize: 16,

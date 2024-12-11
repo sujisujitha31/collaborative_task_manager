@@ -109,7 +109,7 @@ class AddItemController extends GetxController {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const u.TextWithDmSans(
+                            const u.PoppinsText(
                               text: "Name",
                               weight: FontWeight.w500,
                             ),
@@ -129,7 +129,7 @@ class AddItemController extends GetxController {
                                       borderSide: BorderSide(color: violet))),
                             ),
                             u.vFill(20),
-                            const u.TextWithDmSans(
+                            const u.PoppinsText(
                               text: "Email",
                               weight: FontWeight.w500,
                             ),
@@ -173,7 +173,7 @@ class AddItemController extends GetxController {
                     storeCollabUser();
                   }
                 },
-                child: const u.TextWithDmSans(
+                child: const u.PoppinsText(
                   text: "Add",
                   weight: FontWeight.w500,
                 )),
@@ -272,7 +272,7 @@ class AddItemController extends GetxController {
     for (Map element in g.collabUsers) {
       menus.add(DropdownMenuItem(
           value: element["email"],
-          child: u.TextWithDmSans(
+          child: u.PoppinsText(
             text: element["name"],
           )));
     }
@@ -328,7 +328,7 @@ class AddItemController extends GetxController {
                         selectCollab(i, value!, g.collabUsers[i]["email"]);
                       },
                     ),
-                    u.TextWithDmSans(
+                    u.PoppinsText(
                       text: g.collabUsers[i]["name"],
                     )
                   ],
@@ -342,7 +342,7 @@ class AddItemController extends GetxController {
               onPressed: () {
                 Get.back();
               },
-              child: const u.TextWithDmSans(
+              child: const u.PoppinsText(
                 text: "Okay",
               ))
         ]);
