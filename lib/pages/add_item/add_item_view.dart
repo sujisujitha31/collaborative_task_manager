@@ -9,7 +9,6 @@ import 'widgets/collaboration_widget.dart';
 import 'widgets/priority_row.dart';
 import 'widgets/tap_calendar.dart';
 import 'widgets/tap_time.dart';
-import 'widgets/title_and_description_fields.dart';
 
 class AddTaskView extends GetView<AddItemController> {
   const AddTaskView({super.key, required this.h, required this.w});

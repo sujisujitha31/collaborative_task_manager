@@ -26,6 +26,17 @@ String getTimeWithAmPmFormat(DateTime date) {
   return DateFormat.Hm().format(date).toString();
 }
 
+getUniqueId(DateTime selectedDate) {
+  return DateTime(
+    selectedDate.year,
+    selectedDate.month,
+    selectedDate.day,
+    DateTime.now().hour,
+    DateTime.now().minute,
+    DateTime.now().second,
+  ).millisecondsSinceEpoch.toString();
+}
+
 class PoppinsText extends StatelessWidget {
   const PoppinsText(
       {super.key,
@@ -135,7 +146,7 @@ showLoading(message) {
                 child: CircularProgressIndicator(
                   // value: 0.5,
                   strokeWidth: 2.5,
-                  color: violet,
+                  color: appColor,
                 ),
               ),
               vFill(10),
@@ -248,8 +259,10 @@ List<BoxShadow> getBoxShadowOfTitle() {
 }
 
 class MandatoryText extends StatelessWidget {
-  const MandatoryText({super.key, required this.text});
+  const MandatoryText(
+      {super.key, required this.text, required this.isMandatory});
   final String text;
+  final bool isMandatory;
   @override
   Widget build(BuildContext context) {
     return Text.rich(TextSpan(children: [
@@ -260,13 +273,14 @@ class MandatoryText extends StatelessWidget {
             color: Colors.black,
             fontWeight: FontWeight.w600,
           )),
-      TextSpan(
-          text: "*",
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: const Color(0xffEF4444),
-            fontWeight: FontWeight.w400,
-          ))
+      if (isMandatory)
+        TextSpan(
+            text: "*",
+            style: GoogleFonts.poppins(
+              fontSize: 12,
+              color: const Color(0xffEF4444),
+              fontWeight: FontWeight.w400,
+            ))
     ]));
   }
 }
