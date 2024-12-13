@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/components/body_title.dart';
+import 'package:todo_app/components/crud_components.dart';
 import 'package:todo_app/constant.dart';
 import 'package:todo_app/pages/todo_list/todo_list_controller.dart';
 import 'package:todo_app/globals.dart' as g;
@@ -15,13 +17,12 @@ class DesktopTaskListView extends GetView<TodoListController> {
   Widget build(BuildContext context) {
     double parentWidth = MediaQuery.of(context).size.width * .83;
     double h = MediaQuery.of(context).size.height;
-    return TodoListBodyWidget(
-        h: h, controller: controller, parentWidth: parentWidth);
+    return TaskListBody(h: h, controller: controller, parentWidth: parentWidth);
   }
 }
 
-class TodoListBodyWidget extends StatelessWidget {
-  const TodoListBodyWidget({
+class TaskListBody extends StatelessWidget {
+  const TaskListBody({
     super.key,
     required this.h,
     required this.controller,
@@ -38,11 +39,13 @@ class TodoListBodyWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeaderRow(
-          h: h,
-          controller: controller,
-          parentWidth: parentWidth,
+        BodyTitle(
+          title: "Tasks under ${u.getFullDate(controller.selectedDate.value)}",
+          rightsideWidget: Row(
+            children: [RefreshButton(callBack: () {})],
+          ),
         ),
+        u.vFill(20),
         SizedBox(
           width: parentWidth,
           child: Row(
@@ -74,7 +77,7 @@ class Calendar extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(10),
       // height: double.infinity,
-      height: h * .7,
+      height: h * .6,
       // color: Colors.white,
       decoration: BoxDecoration(
           boxShadow: u.getBoxShadow(),
@@ -120,7 +123,7 @@ class TaskList extends StatelessWidget {
             } else if (!cont.isGettingTodos.value && cont.todoList.isEmpty) {
               return SizedBox(
                 height: h * .5,
-                child: const u.PoppinsText(text: "There is no todo "),
+                child: const u.PoppinsText(text: "No tasks found"),
               );
             } else {
               return GridView.builder(

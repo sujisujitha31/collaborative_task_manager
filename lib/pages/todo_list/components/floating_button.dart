@@ -24,7 +24,7 @@ class FloatingWidget extends StatelessWidget {
             backgroundColor: violet,
             onPressed: () async {
               // Get.find<LoginController>().onLogout();
-              Get.to(() => AddItemScreen(
+              Get.to(() => AddTaskView(
                     w: w,
                     h: h,
                   ));

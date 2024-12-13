@@ -35,15 +35,21 @@ class SideMenuController extends GetxController {
     c.Constants.kMainMenuProfile: "Profil",
     c.Constants.kMainMenuLogout: "Logout"
   };
-  Map<String, IconData> icons = {
-    c.Constants.kMainMenuTask: Icons.task,
-    c.Constants.kMainMenuAddTask: Icons.add_circle_rounded,
-    c.Constants.kMainMenuProfile: Icons.person,
-    c.Constants.kMainMenuLogout: Icons.logout
+  Map<String, String> icons = {
+    c.Constants.kMainMenuTask:
+        // Icons.task,
+        "assets/icons/task.png",
+    c.Constants.kMainMenuAddTask:
+        // Icons.add_circle_rounded,
+        "assets/icons/add.png",
+    c.Constants.kMainMenuProfile: "assets/icons/profile.png",
+    // Icons.person,
+    c.Constants.kMainMenuLogout: "assets/icons/logout.png"
+    // Icons.logout
   };
   Map desktopPages = {
     c.Constants.kMainMenuTask: const DesktopTaskListView(),
-    c.Constants.kMainMenuAddTask: const DesktopAddITemView(),
+    c.Constants.kMainMenuAddTask: const DesktopAddTaskView(),
     c.Constants.kMainMenuProfile: const SizedBox(),
     c.Constants.kMainMenuLogout: const SizedBox()
   };

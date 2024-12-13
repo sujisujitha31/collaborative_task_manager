@@ -48,8 +48,12 @@ class NavigationMenu extends GetView<SideMenuController> {
                               : null),
                       child: Row(
                         children: [
-                          Icon(controller.icons.entries.toList()[index].value,
-                              color: c.appColor),
+                          Image.asset(
+                            controller.icons.entries.toList()[index].value,
+                            color: c.appColor,
+                            width: 25,
+                            height: 25,
+                          ),
                           u.hFill(10),
                           u.PoppinsText(
                             text: controller.menuTitles.entries
@@ -62,7 +66,6 @@ class NavigationMenu extends GetView<SideMenuController> {
                                     controller.selectedPage.value
                                 ? c.appColor
                                 : Colors.black,
-                            weight: FontWeight.w500,
                           ),
                         ],
                       ),

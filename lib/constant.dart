@@ -14,6 +14,10 @@ Color navigationContainerBg = const Color(0xffE7F9F0);
 Color scaffoldBg = const Color(0xffF5FEFA);
 Color selectedNavigation = const Color(0xffD0EFD9);
 Color listDividerColor = const Color(0xffE2E8F0);
+Color crudButtonTextColor = const Color(0xff5F6061);
+Color dropdownBorderColor = Color(0xffC0C0C0);
+Color hintTextColor = Color(0xff5F6061);
+Color dropDownBgColor = const Color(0xffFAFAFA);
 
 class Constants {
   static const String kTodoStatusDone = "done";

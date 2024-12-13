@@ -11,98 +11,98 @@ import 'widgets/tap_calendar.dart';
 import 'widgets/tap_time.dart';
 import 'widgets/title_and_description_fields.dart';
 
-class AddItemScreen extends GetView<AddItemController> {
-  const AddItemScreen({super.key, required this.h, required this.w});
+class AddTaskView extends GetView<AddItemController> {
+  const AddTaskView({super.key, required this.h, required this.w});
   final double h;
   final double w;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: w * .05),
-          child: SingleChildScrollView(
-            child: Column(
-              // mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BodyTitle(title: ""),
-                // const Center(
-                //   child: u.TextWithDmSans(
-                //     text: "Add",
-                //     color: Colors.black,
-                //     fontSize: 35,
-                //     weight: FontWeight.w700,
-                //   ),
-                // ),
-                u.vFill(h * .01),
-                Center(
-                  child: Container(
-                    width: 50,
-                    height: 2,
-                    color: Colors.black,
-                  ),
-                ),
-                u.vFill(h * .03),
-                getHeading("Title"),
-                TitleField(controller: controller),
-                u.vFill(h * .02),
-                getHeading("Description"),
-                DescriptionField(
-                  controller: controller,
-                ),
-                u.vFill(h * .02),
-                getHeading("Date"),
-                TapCalendar(
-                  controller: controller,
-                  h: h,
-                  w: w,
-                ),
-                u.vFill(h * .02),
-                getHeading("Time"),
-                TapTime(w),
-                u.vFill(h * .02),
-                getHeading("Collab with"),
-                CollaborationWidget(
-                  w: w,
-                  controller: controller,
-                ),
-                u.vFill(h * .02),
-                ShareTaskListWidget(
-                  controller: controller,
-                ),
-                getHeading("Priority"),
-                PriorityRow(
-                  controller: controller,
-                ),
-                u.vFill(h * .02),
-                Center(
-                  child: SizedBox(
-                    width: w * .8,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: violet,
-                            padding: const EdgeInsets.symmetric(vertical: 17),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28)),
-                            shadowColor: violet),
-                        onPressed: () {
-                          controller.createTask();
-                        },
-                        child: const u.PoppinsText(
-                          text: "Save",
-                          fontSize: 17,
-                          weight: FontWeight.w500,
-                        )),
-                  ),
-                ),
-                u.vFill(h * .02),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+        // body: SafeArea(
+        //   child: Padding(
+        //     padding: EdgeInsets.symmetric(horizontal: w * .05),
+        //     child: SingleChildScrollView(
+        //       child: Column(
+        //         // mainAxisSize: MainAxisSize.max,
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           BodyTitle(title: ""),
+        //           // const Center(
+        //           //   child: u.TextWithDmSans(
+        //           //     text: "Add",
+        //           //     color: Colors.black,
+        //           //     fontSize: 35,
+        //           //     weight: FontWeight.w700,
+        //           //   ),
+        //           // ),
+        //           u.vFill(h * .01),
+        //           Center(
+        //             child: Container(
+        //               width: 50,
+        //               height: 2,
+        //               color: Colors.black,
+        //             ),
+        //           ),
+        //           u.vFill(h * .03),
+        //           getHeading("Title"),
+        //           TitleField(controller: controller),
+        //           u.vFill(h * .02),
+        //           getHeading("Description"),
+        //           DescriptionField(
+        //             controller: controller,
+        //           ),
+        //           u.vFill(h * .02),
+        //           getHeading("Date"),
+        //           TapCalendar(
+        //             controller: controller,
+        //             h: h,
+        //             w: w,
+        //           ),
+        //           u.vFill(h * .02),
+        //           getHeading("Time"),
+        //           TapTime(w),
+        //           u.vFill(h * .02),
+        //           getHeading("Collab with"),
+        //           CollaborationWidget(
+        //             w: w,
+        //             controller: controller,
+        //           ),
+        //           u.vFill(h * .02),
+        //           ShareTaskListWidget(
+        //             controller: controller,
+        //           ),
+        //           getHeading("Priority"),
+        //           PriorityRow(
+        //             controller: controller,
+        //           ),
+        //           u.vFill(h * .02),
+        //           Center(
+        //             child: SizedBox(
+        //               width: w * .8,
+        //               child: ElevatedButton(
+        //                   style: ElevatedButton.styleFrom(
+        //                       backgroundColor: violet,
+        //                       padding: const EdgeInsets.symmetric(vertical: 17),
+        //                       shape: RoundedRectangleBorder(
+        //                           borderRadius: BorderRadius.circular(28)),
+        //                       shadowColor: violet),
+        //                   onPressed: () {
+        //                     controller.createTask();
+        //                   },
+        //                   child: const u.PoppinsText(
+        //                     text: "Save",
+        //                     fontSize: 17,
+        //                     weight: FontWeight.w500,
+        //                   )),
+        //             ),
+        //           ),
+        //           u.vFill(h * .02),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        );
   }
 }
 
