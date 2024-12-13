@@ -50,7 +50,7 @@ class PoppinsText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.montserrat(
+      style: GoogleFonts.poppins(
           color: color,
           fontSize: fontSize,
           fontWeight: weight,

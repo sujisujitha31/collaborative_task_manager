@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/components/body_title.dart';
+import 'package:todo_app/components/mandatory_text.dart';
 import 'package:todo_app/constant.dart' as c;
 import 'package:todo_app/pages/add_item/add_item_controller.dart';
-import 'package:todo_app/pages/add_item/widgets/collaboration_widget.dart';
 import 'package:todo_app/pages/add_item/widgets/priority_row.dart';
 import 'package:todo_app/pages/add_item/widgets/tap_calendar.dart';
 import 'package:todo_app/pages/add_item/widgets/title_and_description_fields.dart';
 import 'package:todo_app/utils.dart' as u;
-
+import 'package:todo_app/globals.dart' as g;
 import 'add_item_view.dart';
 
-class DesktopAddITemView extends GetView<AddItemController> {
-  const DesktopAddITemView({super.key});
+class DesktopAddTaskView extends GetView<AddItemController> {
+  const DesktopAddTaskView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,29 +40,73 @@ class AddItemBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // u.vFill(20),
-        SizedBox(
-            width: w,
-            child: FillUpWidget(w: w * .5, controller: controller, h: h)
-            /* Row(
-            children: [
-              const Spacer(
-                flex: 1,
-              ),
-              FillUpWidget(w: w * .5, controller: controller, h: h),
-              const Spacer(),
-              DetailsBoard(w: w * .4, controller: controller),
-              const Spacer(),
-            ],
-          ),*/
-            ),
+        BodyTitle(title: "Add task"),
+        u.vFill(20),
+        Row(
+          children: [
+            MandatoryTextWithchildWidget(
+                width: w * .4,
+                text: "Title",
+                child: TextFormField(
+                  decoration: getFormFieldDecoration("Enter title"),
+                )),
+            Spacer(),
+            MandatoryTextWithchildWidget(
+                width: w * .4,
+                text: "description",
+                child: TextFormField(
+                  decoration: getFormFieldDecoration("Enter title"),
+                ))
+          ],
+        ),
+        u.vFill(20),
+        Row(
+          children: [
+            MandatoryTextWithchildWidget(
+                width: w * .4,
+                text: "Collab with",
+                child: CollaborationWidget(w: w * .4, controller: controller)
+                //  TextFormField(
+                //   decoration: getFormFieldDecoration("Enter title"),
+                // )
+                ),
+            Spacer(),
+            MandatoryTextWithchildWidget(
+                width: w * .4,
+                text: "description",
+                child: TextFormField(
+                  decoration: getFormFieldDecoration("Enter title"),
+                ))
+          ],
+        )
       ],
     );
   }
 }
 
-class DetailsBoard extends StatelessWidget {
-  const DetailsBoard({
+InputDecoration getFormFieldDecoration(String hint) {
+  return InputDecoration(
+      hintText: hint,
+      hintStyle: GoogleFonts.inter(
+          color: Color(
+            0xff5F6061,
+          ),
+          fontSize: 14),
+      fillColor:
+          //  bgColor != null ?
+          c.dropDownBgColor,
+      //  : null,
+      filled: true,
+      //  bgColor ?? false,
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(color: c.dropdownBorderColor)),
+      enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: c.dropdownBorderColor)));
+}
+
+class CollaborationWidget extends StatelessWidget {
+  const CollaborationWidget({
     super.key,
     required this.w,
     required this.controller,
@@ -72,114 +117,42 @@ class DetailsBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20),
-      padding: EdgeInsets.symmetric(horizontal: w * .05),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(5)
-          //  BorderRadius.only(
-          //     topLeft: Radius.circular(40),
-          //     bottomLeft: Radius.circular(40))
-          ),
-      width: w,
-      child: controller.showDetails()
-          ? Column(
-              children: [
-                u.vFill(30),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: w * .27,
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: RotationTransition(
-                          turns: const AlwaysStoppedAnimation(330 / 360),
-                          child: Container(
-                            padding: const EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color: Colors.black)),
-                            child: u.PoppinsText(
-                              text:
-                                  u.getFullDate(controller.selectedDate.value),
-                              maxLine: 2,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const Spacer(),
-                    SizedBox(
-                      width: w * .35,
-                      child: Center(
-                        child: u.PoppinsText(
-                          text: "My board",
-                          color: c.purpleTheme,
-                          fontSize: 18,
-                          weight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    const Spacer(),
-                    SizedBox(
-                      width: w * .2,
-                    )
-                  ],
-                ),
-                u.vFill(20),
-                u.PoppinsText(
-                  text: "i am gonna do ${controller.titleController.text}",
-                  fontSize: 15,
-                  weight: FontWeight.w500,
-                ),
-                u.vFill(20),
-                u.PoppinsText(
-                  text: "details",
-                  color: c.purpleTheme,
-                  weight: FontWeight.w500,
-                ),
-                u.vFill(2),
-                u.PoppinsText(
-                  text: controller.descriptionController.text,
-                  maxLine: 4,
-                  textalign: TextAlign.center,
-                ),
-                u.vFill(20),
-                u.PoppinsText(
-                  text: "i want to share this with",
-                  color: c.purpleTheme,
-                  weight: FontWeight.w500,
-                ),
-                controller.selectedCollabNames.isEmpty
-                    ? const u.PoppinsText(
-                        text: "No body",
-                      )
-                    : const SizedBox(),
-                for (int i = 0; i < controller.selectedCollabNames.length; i++)
-                  Row(
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 5),
-                        width: 25, height: 20,
-                        // padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.black)),
-                        child: Center(
-                          child: u.PoppinsText(
-                            text: (i + 1).toString(),
-                          ),
-                        ),
-                      ),
-                      u.PoppinsText(
-                        text: controller.selectedCollabNames[i],
-                      ),
-                    ],
-                  )
-              ],
-            )
-          : const SizedBox(),
+    return Row(
+      children: [
+        SizedBox(
+          width: w * .7,
+          child: g.collabUsers.isEmpty
+              ? const u.PoppinsText(text: "There is no collaboraters added yet")
+              : TextFormField(
+                  readOnly: true,
+                  onTap: () {
+                    controller.showAddCollabaratorToTask();
+                  },
+                  decoration: getFormFieldDecoration("Choose collaborators")
+                  // InputDecoration(
+                  //     hintStyle: GoogleFonts.dmSans(fontSize: 12),
+                  //     hintText: "Choose collaborators",
+                  //     focusedBorder: OutlineInputBorder(
+                  //         borderSide: BorderSide(color: violet)),
+                  //     enabledBorder: OutlineInputBorder(
+                  //         borderSide: BorderSide(color: violet))),
+                  ),
+        ),
+        SizedBox(
+            width: w * .2,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                  onPressed: () {
+                    controller.showDialogForAddCollaborator(w);
+                  },
+                  icon: const Icon(
+                    Icons.add_circle_rounded,
+                    color: Colors.green,
+                    size: 40,
+                  )),
+            )),
+      ],
     );
   }
 }

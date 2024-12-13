@@ -10,7 +10,6 @@ class TabletTodoListView extends GetView<TodoListController> {
   Widget build(BuildContext context) {
     double parentWidth = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return TodoListBodyWidget(
-        h: h, controller: controller, parentWidth: parentWidth);
+    return TaskListBody(h: h, controller: controller, parentWidth: parentWidth);
   }
 }
