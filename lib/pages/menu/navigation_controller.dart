@@ -13,7 +13,7 @@ import '../todo_list/desktop_todo_list_view.dart';
 import 'package:todo_app/constant.dart' as c;
 
 class SideMenuController extends GetxController {
-  var selectedPage = c.Constants.kMainMenuTask.obs;
+  var selectedPage = c.Constants.kMainMenuAddTask.obs;
   var previoulySelectedPage = "".obs;
   goToPage(String index, {BuildContext? context}) {
     previoulySelectedPage.value = selectedPage.value;

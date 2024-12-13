@@ -22,12 +22,13 @@ class PriorityRow extends StatelessWidget {
           fontSize: 12,
           color: Colors.black45,
         ),
-        const Spacer(),
+        u.hFill(25),
+        // const Spacer(),
         Transform.scale(
             scale: 1.5,
             child: Obx(
               () => Checkbox(
-                  activeColor: violet,
+                  activeColor: appColor,
                   side: const BorderSide(color: Colors.black, width: 0.5),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4)),

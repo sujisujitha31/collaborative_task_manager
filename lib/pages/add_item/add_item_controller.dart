@@ -24,57 +24,6 @@ class AddItemController extends GetxController {
   TextEditingController collbName = TextEditingController();
   TextEditingController collabMail = TextEditingController();
 
-  createTask() {
-    if (validateInputs()) {
-      storeDataToDb();
-    }
-  }
-
-  storeDataToDb() async {
-    u.showLoading("creating");
-    TodoModel todoData = TodoModel.fromJson({});
-
-    String uniqueId = DateTime(
-      selectedDate.value.year,
-      selectedDate.value.month,
-      selectedDate.value.day,
-      // startTime!.hour,
-      // startTime!.minute,
-      DateTime.now().hour,
-      DateTime.now().minute,
-      DateTime.now().second,
-    ).millisecondsSinceEpoch.toString();
-    todoData.type = "todo";
-    todoData.title = titleController.text;
-    todoData.description = descriptionController.text;
-    todoData.dateTime = selectedDate.value.toString();
-    todoData.priority = goingToMakePriority.value;
-    todoData.id = uniqueId;
-    todoData.status = false;
-    for (int i = 0; i < selectedCollabIds.length; i++) {
-      storeCollaboratorsTask(todoData, uniqueId, selectedCollabIds[i]);
-    }
-    FirebaseDatabase().storeData(
-      g.userMail,
-      todoData,
-      uniqueId,
-      onSuccess: (data) {
-        clearData();
-        clearCollabDetails();
-        Get.find<TodoListController>().searchByToday();
-        Get.find<TodoListController>().getTodos();
-        // Get.find<SideMenuController>().goToPage("task");
-        // Get.back();
-        u.closeLoading();
-        u.showWarning("", data);
-      },
-      onErrror: (fail) {
-        u.closeLoading();
-        u.showWarning("", fail);
-      },
-    );
-  }
-
   storeCollaboratorsTask(TodoModel todo, String uniqueId, String usersMail) {
     FirebaseDatabase().storeData(
       usersMail,
@@ -88,9 +37,54 @@ class AddItemController extends GetxController {
   validateInputs() {
     if (titleController.text.isEmpty) {
       u.showWarning("Warning", "Please give title of the task");
-      return false;
+    } else if (descriptionController.text.isEmpty) {
+      u.showWarning("Warning", "Please give the description");
+    } else {
+      createTask();
     }
-    return true;
+  }
+
+  createTask() {
+    storeDataToDb();
+  }
+
+  storeDataToDb() async {
+    print("inside function");
+    u.showLoading("creating");
+    TodoModel todoData = TodoModel.fromJson({});
+
+    String uniqueId = u.getUniqueId(selectedDate.value);
+    todoData.type = "todo";
+    todoData.title = titleController.text;
+    todoData.description = descriptionController.text;
+    todoData.dateTime = selectedDate.value.toString();
+    todoData.priority = goingToMakePriority.value;
+    todoData.id = uniqueId;
+    todoData.status = false;
+    print("going....");
+    for (int i = 0; i < selectedCollabIds.length; i++) {
+      storeCollaboratorsTask(todoData, uniqueId, selectedCollabIds[i]);
+    }
+    print("gonna call storeData");
+    FirebaseDatabase().storeData(
+      g.userMail,
+      todoData,
+      uniqueId,
+      onSuccess: (data) {
+        print("inside onsuccess");
+        clearData();
+        clearCollabDetails();
+        Get.find<TodoListController>().searchByToday();
+        Get.find<TodoListController>().getTodos();
+        u.closeLoading();
+        u.showWarning("", data);
+      },
+      onErrror: (fail) {
+        print("on error");
+        u.closeLoading();
+        u.showWarning("", fail);
+      },
+    );
   }
 
   showDialogForAddCollaborator(double w) {
@@ -179,21 +173,6 @@ class AddItemController extends GetxController {
                 )),
           )
         ]);
-  }
-
-  validate() {
-    if (titleController.text.isEmpty) {
-      u.showWarning("!", "Please give title for your todo.");
-      return false;
-    } else if (descriptionController.text.isEmpty) {
-      u.showWarning("!", "Please give description");
-      return false;
-    } else if (startTime == null || endTime == null) {
-      u.showWarning("!", "Please give start and end time");
-      return false;
-    } else {
-      return true;
-    }
   }
 
   clearData() {
