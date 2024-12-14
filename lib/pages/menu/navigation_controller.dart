@@ -32,7 +32,7 @@ class SideMenuController extends GetxController {
   Map<String, String> menuTitles = {
     c.Constants.kMainMenuTask: "Tasks",
     c.Constants.kMainMenuAddTask: "Add task",
-    c.Constants.kMainMenuProfile: "Profil",
+    c.Constants.kMainMenuProfile: "Profile",
     c.Constants.kMainMenuLogout: "Logout"
   };
   Map<String, String> icons = {

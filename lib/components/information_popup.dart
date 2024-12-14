@@ -122,6 +122,7 @@ getConfirmationPopupIcon(Color color1, Color color2, String image) {
         image,
         height: 30,
         width: 30,
+        color: c.appColor,
       ),
     ),
   );
