@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/components/body_title.dart';
@@ -11,7 +10,7 @@ import 'package:todo_app/pages/add_item/widgets/tap_calendar.dart';
 import 'package:todo_app/utils.dart' as u;
 import 'package:todo_app/globals.dart' as g;
 import '../../components/crud_components.dart';
-import 'add_item_view.dart';
+import '../../components/formfield_decoration.dart';
 
 class DesktopAddTaskView extends GetView<AddItemController> {
   const DesktopAddTaskView({super.key});
@@ -40,7 +39,7 @@ class AddItemBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BodyTitle(title: "Add task"),
+        const BodyTitle(title: "Add task"),
         u.vFill(20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,6 +50,7 @@ class AddItemBodyWidget extends StatelessWidget {
                     width: w * .4,
                     text: "Task title",
                     child: TextFormField(
+                      style: GoogleFonts.inter(),
                       controller: controller.titleController,
                       decoration: getFormFieldDecoration("Enter title"),
                     )),
@@ -67,12 +67,13 @@ class AddItemBodyWidget extends StatelessWidget {
                     ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             MandatoryTextWithchildWidget(
                 // isMandatory: false,
                 width: w * .5,
                 text: "Task description",
                 child: TextFormField(
+                  style: GoogleFonts.inter(),
                   controller: controller.descriptionController,
                   maxLines: 5,
                   decoration: getFormFieldDecoration("Description of the task"),
@@ -89,7 +90,7 @@ class AddItemBodyWidget extends StatelessWidget {
                 child: TapCalendar(
                   controller: controller,
                 )),
-            Spacer(),
+            const Spacer(),
             MandatoryTextWithchildWidget(
               width: w * .5,
               text: "Priority",
@@ -103,7 +104,7 @@ class AddItemBodyWidget extends StatelessWidget {
         u.vFill(20),
         Row(
           children: [
-            Spacer(),
+            const Spacer(),
             SimpleGreenBgElevatedBtn(
                 callback: () {
                   controller.validateInputs();
@@ -114,27 +115,6 @@ class AddItemBodyWidget extends StatelessWidget {
       ],
     );
   }
-}
-
-InputDecoration getFormFieldDecoration(String hint) {
-  return InputDecoration(
-      hintText: hint,
-      hintStyle: GoogleFonts.inter(
-          color: Color(
-            0xff5F6061,
-          ),
-          fontSize: 14),
-      fillColor:
-          //  bgColor != null ?
-          c.dropDownBgColor,
-      //  : null,
-      filled: true,
-      //  bgColor ?? false,
-      focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: c.dropdownBorderColor)),
-      enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: c.dropdownBorderColor)));
 }
 
 class CollaborationWidget extends StatelessWidget {
@@ -154,8 +134,9 @@ class CollaborationWidget extends StatelessWidget {
         SizedBox(
           width: w * .7,
           child: g.collabUsers.isEmpty
-              ? const u.PoppinsText(text: "There is no collaboraters added yet")
+              ? const u.InterText(text: "There is no collaboraters added yet")
               : TextFormField(
+                  style: GoogleFonts.inter(),
                   readOnly: true,
                   onTap: () {
                     controller.showAddCollabaratorToTask();
@@ -163,11 +144,33 @@ class CollaborationWidget extends StatelessWidget {
                   decoration: getFormFieldDecoration("Choose collaborators")),
         ),
         u.hFill(25),
-        Image.asset(
-          "assets/icons/add_user.png",
-          color: c.appColor,
-          width: 30,
-          height: 30,
+        InkWell(
+          onTap: () {
+            controller.createNewCollaborators();
+          },
+          child: Container(
+            padding: const EdgeInsets.all(7),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: c.navigationContainerBg),
+            child: Row(
+              children: [
+                Image.asset(
+                  "assets/icons/add_user.png",
+                  color: c.appColor,
+                  width: 30,
+                  height: 30,
+                ),
+                u.hFill(15),
+                u.InterText(
+                  text: "Add",
+                  color: c.appColor,
+                  fontSize: 15,
+                  weight: FontWeight.w500,
+                )
+              ],
+            ),
+          ),
         )
       ],
     );

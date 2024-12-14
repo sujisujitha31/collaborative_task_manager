@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:todo_app/constant.dart';
+import 'package:todo_app/responsive.dart';
 
 Logger log = Logger();
 String getWeekDay(DateTime day) {
@@ -282,5 +283,16 @@ class MandatoryText extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ))
     ]));
+  }
+}
+
+getResponsiveSize(
+    context, double mobileSize, double tabsize, double desktopSize) {
+  if (Responsive.isMobile(context)) {
+    return mobileSize;
+  } else if (Responsive.isTablet(context)) {
+    return tabsize;
+  } else {
+    return desktopSize;
   }
 }

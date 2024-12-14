@@ -32,7 +32,8 @@ class TapCalendar extends StatelessWidget {
               border: Border.all(color: c.dropdownBorderColor),
               borderRadius: BorderRadius.circular(7)),
           child: Center(
-              child: u.PoppinsText(
+              child: u.InterText(
+                  fontSize: 14,
                   text: u.getFullDate(controller.selectedDate.value),
                   // fontSize: 12,
                   weight: FontWeight.w400)),
