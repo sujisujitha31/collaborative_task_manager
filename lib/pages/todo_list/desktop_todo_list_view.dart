@@ -86,7 +86,7 @@ class Calendar extends StatelessWidget {
       child: Column(mainAxisSize: MainAxisSize.max, children: [
         NavigationCalendar(
           // h: h,/
-          w: parentWidth * .35,
+          w: parentWidth * .3,
           today: DateTime.now(),
         ),
       ]),
